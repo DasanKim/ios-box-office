@@ -14,6 +14,7 @@ struct DecodingManager {
         guard let dataAsset: NSDataAsset = NSDataAsset(name: fileName) else {
             throw DataError.notFoundAsset
         }
+        
         guard let decodedData: T = try? decoder.decode(T.self, from: dataAsset.data) else {
             throw DataError.failedDecoding
         }
