@@ -11,7 +11,7 @@ struct DecodingManager {
     func decodeJSON<T: Decodable>(fileName: String) throws -> T {
         let decoder = JSONDecoder()
         
-        guard let dataAsset: NSDataAsset = NSDataAsset(name: fileName) else {
+        guard let dataAsset = NSDataAsset(name: fileName) else {
             throw DataError.notFoundAsset
         }
         

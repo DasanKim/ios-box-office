@@ -20,38 +20,38 @@ final class DecodingManagerTests: XCTestCase {
     }
     
     func test_일치하는_dataAsset이없을때_notFoundAsset에러를_던진다() {
-        //given, when
+        //given
         let fileName = "없는파일이름"
         
-        //then
+        //when, then
         XCTAssertThrowsError(try sut.decodeJSON(fileName: fileName) as BoxOffice) { error in
             XCTAssertEqual(error as! DataError, DataError.notFoundAsset)
         }
     }
     
     func test_일치하는_dataAsset가있을때_notFoundAsset에러를_던지지않는다() {
-        //given, when
+        //given
         let fileName = "box_office_sample"
         
-        //then
+        //when, then
         XCTAssertNoThrow(try sut.decodeJSON(fileName: fileName) as BoxOffice)
     }
     
     func test_Model타입과_JSON데이터의_key가달라_decoding이_실패했을때_failedDecoding에러를_던진다() {
-        //given, when
+        //given
         let fileName = "box_office_sample_test"
         
-        //then
+        //when, then
         XCTAssertThrowsError(try sut.decodeJSON(fileName: fileName) as BoxOffice) { error in
             XCTAssertEqual(error as! DataError, DataError.failedDecoding)
         }
     }
     
     func test_Model타입과_JSON데이터의_key가같아_decoding이_성공했을때_failedDecoding에러를_던지지않는다() {
-        //given, when
+        //given
         let fileName = "box_office_sample"
         
-        //then
+        //when, then
         XCTAssertNoThrow(try sut.decodeJSON(fileName: fileName) as BoxOffice)
     }
     

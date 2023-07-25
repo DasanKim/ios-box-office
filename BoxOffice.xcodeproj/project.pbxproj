@@ -109,9 +109,8 @@
 		63DF20E22970E1A0005DF7D1 = {
 			isa = PBXGroup;
 			children = (
-				AC2C7AF12A6FC21C000CD35F /* BoxOffice.xctestplan */,
 				63DF20ED2970E1A0005DF7D1 /* BoxOffice */,
-				AC02E1932A6FC02B00C6A91B /* DecodingManagerTests */,
+				AC2C7AF22A6FC386000CD35F /* BoxOfficeTests */,
 				63DF20EC2970E1A0005DF7D1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -144,6 +143,15 @@
 				AC02E1942A6FC02B00C6A91B /* DecodingManagerTests.swift */,
 			);
 			path = DecodingManagerTests;
+			sourceTree = "<group>";
+		};
+		AC2C7AF22A6FC386000CD35F /* BoxOfficeTests */ = {
+			isa = PBXGroup;
+			children = (
+				AC2C7AF12A6FC21C000CD35F /* BoxOffice.xctestplan */,
+				AC02E1932A6FC02B00C6A91B /* DecodingManagerTests */,
+			);
+			path = BoxOfficeTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
