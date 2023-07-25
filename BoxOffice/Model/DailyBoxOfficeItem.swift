@@ -5,7 +5,7 @@
 //  Created by Whales on 2023/07/25.
 //
 
-struct DailyBoxOfficeItem: Codable { // daily면 바뀌지 않을까?
+struct DailyBoxOfficeItem: Decodable { // daily면 바뀌지 않을까?
     var rawNumber: String
     var rank: String
     var rankInten: String // 얘는 뭘까? Integer 느낌이었는데 n이란 말이지. 증감분이래 근데 무슨 영어가 있지

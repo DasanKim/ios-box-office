@@ -7,7 +7,7 @@
 
 //import Foundation
 
-struct BoxOfficeResult: Codable { // 파일 주고받고 하려고
+struct BoxOfficeResult: Decodable { // 파일 받기만
     let boxOfficeType: String
     let showRange: String
     let dailyBoxOfficeList: [DailyBoxOfficeItem]
