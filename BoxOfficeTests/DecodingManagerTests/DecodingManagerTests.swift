@@ -25,7 +25,7 @@ final class DecodingManagerTests: XCTestCase {
         
         //when, then
         XCTAssertThrowsError(try sut.decodeJSON(fileName: fileName) as BoxOffice) { error in
-            XCTAssertEqual(error as! DataError, DataError.notFoundAsset)
+            XCTAssertEqual(error as? DataError, DataError.notFoundAsset)
         }
     }
     
@@ -43,7 +43,7 @@ final class DecodingManagerTests: XCTestCase {
         
         //when, then
         XCTAssertThrowsError(try sut.decodeJSON(fileName: fileName) as BoxOffice) { error in
-            XCTAssertEqual(error as! DataError, DataError.failedDecoding)
+            XCTAssertEqual(error as? DataError, DataError.failedDecoding)
         }
     }
     
