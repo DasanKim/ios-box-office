@@ -8,20 +8,8 @@
 import Foundation
 
 struct NetworkManager {
-    private func configureURL(url: String, queryItems: [URLQueryItem]) -> URL? {
-        guard var urlComponents = URLComponents(string: url) else {
-            return nil
-        }
-
-        urlComponents.queryItems = queryItems
-    
-        return urlComponents.url
-    }
-    
-    func fetchData(url: String, queryItems: [URLQueryItem], completionHandler: @escaping (Data) -> ()) {
-        guard let url = configureURL(url: url, queryItems: queryItems) else {
-            return
-        }
+    func fetchData(url: URL?, completionHandler: @escaping (Data) -> ()) {
+        guard let url = url else { return }
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
