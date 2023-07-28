@@ -99,7 +99,7 @@ struct Actor: Decodable {
         case peopleName = "peopleNm"
         case peopleEnglishName = "peopleNmEn"
         case cast
-        case castEnglish
+        case castEnglish = "castEn"
     }
 }
 
