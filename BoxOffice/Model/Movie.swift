@@ -80,26 +80,26 @@ struct Genre: Decodable {
 }
 
 struct Director: Decodable {
-    let peopleName: String
-    let peopleEnglishName: String
+    let personName: String
+    let personEnglishName: String
 
     private enum CodingKeys: String, CodingKey {
-        case peopleName = "peopleNm"
-        case peopleEnglishName = "peopleNmEn"
+        case personName = "peopleNm"
+        case personEnglishName = "peopleNmEn"
     }
 }
 
 struct Actor: Decodable {
-    let peopleName: String
-    let peopleEnglishName: String
+    let personName: String
+    let personEnglishName: String
     let cast: String
     let castEnglish: String
 
     private enum CodingKeys: String, CodingKey {
-        case peopleName = "peopleNm"
-        case peopleEnglishName = "peopleNmEn"
+        case personName = "peopleNm"
+        case personEnglishName = "peopleNmEn"
         case cast
-        case castEnglish
+        case castEnglish = "castEn"
     }
 }
 
@@ -138,13 +138,13 @@ struct Audit: Decodable {
 }
 
 struct Staff: Decodable {
-    let peopleName: String
-    let peopleEnglishName: String
+    let personName: String
+    let personEnglishName: String
     let staffRoleName: String
 
     private enum CodingKeys: String, CodingKey {
-        case peopleName = "peopleNm"
-        case peopleEnglishName = "peopleNmEn"
+        case personName = "peopleNm"
+        case personEnglishName = "peopleNmEn"
         case staffRoleName = "staffRoleNm"
     }
 }
