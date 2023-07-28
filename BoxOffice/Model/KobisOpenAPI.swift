@@ -42,10 +42,6 @@ extension KobisOpenAPI: API {
     }
     
     var url: URL? {
-        var urlComponents = URLComponents(string: baseURL)
-        urlComponents?.path = path
-        urlComponents?.queryItems = query
-
-        return urlComponents?.url
+        return URL(baseURL, path, query)
     }
 }

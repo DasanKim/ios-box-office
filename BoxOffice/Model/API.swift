@@ -11,5 +11,4 @@ protocol API {
     var baseURL: String { get }
     var path: String { get }
     var query: [URLQueryItem] { get }
-    var key: String { get }
 }

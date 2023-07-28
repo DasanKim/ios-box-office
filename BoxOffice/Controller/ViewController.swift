@@ -13,6 +13,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let networkManager = NetworkManager()
+        
         networkManager.fetchData(url: KobisOpenAPI.boxOffice("20220102").url) { data in
             guard let decodedData: BoxOffice = try? DecodingManager.decodeJSON(data: data) else {
                 return
