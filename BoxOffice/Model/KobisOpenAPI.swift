@@ -8,8 +8,8 @@
 import Foundation
 
 enum KobisOpenAPI {
-    case boxOffice(String)
-    case movie(String)
+    case boxOffice(targetDate: String)
+    case movie(movieCode: String)
 }
 
 extension KobisOpenAPI: API {

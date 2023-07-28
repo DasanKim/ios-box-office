@@ -14,15 +14,15 @@ class ViewController: UIViewController {
         
         let networkManager = NetworkManager()
         
-        networkManager.fetchData(url: KobisOpenAPI.boxOffice("20220102").url) { data in
-            guard let decodedData: BoxOffice = try? DecodingManager.decodeJSON(data: data) else {
+        networkManager.fetchData(url: KobisOpenAPI.boxOffice(targetDate: "20220102").url) { data in
+            guard let decodedData = try? DecodingManager.decodeJSON(type: BoxOffice.self, data: data) else {
                 return
             }
             print(decodedData)
         }
 
-        networkManager.fetchData(url: KobisOpenAPI.movie("20124079").url) { data in
-            guard let decodedData: Movie = try? DecodingManager.decodeJSON(data: data) else {
+        networkManager.fetchData(url: KobisOpenAPI.movie(movieCode: "20124079").url) { data in
+            guard let decodedData = try? DecodingManager.decodeJSON(type: Movie.self, data: data) else {
                 return
             }
             print(decodedData)
