@@ -18,7 +18,7 @@ struct NetworkManager {
         return urlComponents.url
     }
     
-    func fetchData(url: String, queryItems: [URLQueryItem]) {
+    func fetchData(url: String, queryItems: [URLQueryItem], completionHandler: @escaping (Data) -> ()) {
         guard let url = configureURL(url: url, queryItems: queryItems) else {
             return
         }
@@ -34,12 +34,13 @@ struct NetworkManager {
                 return
             }
             
-            guard let data = data,
-                  let boxOffice: BoxOffice = try? DecodingManager.decodeJSON(data: data) else {
+            guard let data = data else {
                 return
             }
-            print(boxOffice)
+            
+            completionHandler(data)
         }
+        
         task.resume()
     }
 }
