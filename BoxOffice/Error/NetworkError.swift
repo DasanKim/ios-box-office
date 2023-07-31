@@ -9,15 +9,15 @@ import Foundation
 
 enum NetworkError: LocalizedError {
     case requestFailed
-    case invalidResponse(URLResponse)
+    case invalidResponse
     case noData
     
-    var errorDescription: String? { // 옵셔널. 그래야 원래 있던 걸 씀. 아니면 새로운 친구로 덮어씌워짐
+    var errorDescription: String? {
         switch self {
         case .requestFailed:
             return "요청이 실패하였습니다."
-        case .invalidResponse(let response):
-            return "HTTP 요청코드: \(response)"
+        case .invalidResponse:
+            return "유효하지 않은 응답이거나 성공적인 응답이 아닙니다."
         case .noData:
             return "데이터가 없습니다."
         }

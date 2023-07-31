@@ -144,8 +144,8 @@
 		63DF20ED2970E1A0005DF7D1 /* BoxOffice */ = {
 			isa = PBXGroup;
 			children = (
-				AC6796AC2A77A00000DADDBA /* Utility */,
 				3C35A80B2A6F68C7008BB5C2 /* Application */,
+				AC6796AC2A77A00000DADDBA /* Utility */,
 				3C35A8082A6F68A9008BB5C2 /* Model */,
 				3C35A8092A6F68B1008BB5C2 /* View */,
 				3C35A80A2A6F68BB008BB5C2 /* Controller */,
