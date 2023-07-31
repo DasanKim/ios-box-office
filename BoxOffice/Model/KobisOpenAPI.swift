@@ -18,12 +18,16 @@ extension KobisOpenAPI: API {
     }
     
     var path: String {
+        var pathString = "/kobisopenapi/webservice/rest/"
+        
         switch self {
         case .boxOffice:
-            return "/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json"
+            pathString += "boxoffice/searchDailyBoxOfficeList.json"
         case .movie:
-            return "/kobisopenapi/webservice/rest/movie/searchMovieInfo.json"
+            pathString += "movie/searchMovieInfo.json"
         }
+        
+        return pathString
     }
     
     var queries: [URLQueryItem] {
