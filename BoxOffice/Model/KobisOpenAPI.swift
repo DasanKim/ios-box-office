@@ -12,7 +12,7 @@ enum KobisOpenAPI {
     case movie(movieCode: String)
 }
 
-extension KobisOpenAPI: API {
+extension KobisOpenAPI: URLConfigurable {
     var baseURL: String {
         return "http://www.kobis.or.kr"
     }
