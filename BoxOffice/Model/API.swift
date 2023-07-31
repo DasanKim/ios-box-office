@@ -10,5 +10,5 @@ import Foundation
 protocol API {
     var baseURL: String { get }
     var path: String { get }
-    var query: [URLQueryItem] { get }
+    var queries: [URLQueryItem] { get }
 }

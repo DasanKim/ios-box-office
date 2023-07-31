@@ -26,7 +26,7 @@ extension KobisOpenAPI: API {
         }
     }
     
-    var query: [URLQueryItem] {
+    var queries: [URLQueryItem] {
         switch self {
         case .boxOffice(let targetDate):
             return [URLQueryItem(name: "key", value: key),
@@ -37,11 +37,11 @@ extension KobisOpenAPI: API {
         }
     }
     
-    var key: String {
+    private var key: String {
         return "fb92260b76d9959bbf3ab69c991d8985"
     }
     
     var url: URL? {
-        return URL(baseURL, path, query)
+        return URL(baseURL, path, queries)
     }
 }
