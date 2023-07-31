@@ -83,7 +83,6 @@
 				AC11E7DE2A729341008A84B0 /* Movie.swift */,
 				3CF5610A2A73D30F0048D14D /* URLConfigurable.swift */,
 				3CF5610C2A73D3540048D14D /* KobisOpenAPI.swift */,
-				3CF5610E2A73E7830048D14D /* URL+.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -178,6 +177,7 @@
 			children = (
 				3C35A80C2A6F9937008BB5C2 /* DecodingManager.swift */,
 				AC11E7E42A729FE3008A84B0 /* NetworkManager.swift */,
+				3CF5610E2A73E7830048D14D /* URL+.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
