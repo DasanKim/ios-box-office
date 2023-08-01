@@ -33,16 +33,12 @@ extension KobisOpenAPI: URLConfigurable {
     var queries: [URLQueryItem] {
         switch self {
         case .boxOffice(let targetDate):
-            return [URLQueryItem(name: "key", value: key),
+            return [URLQueryItem(name: "key", value: Bundle.main.KOBIS_API_KEY),
                     URLQueryItem(name: "targetDt", value: targetDate)]
         case .movie(let movieCode):
-            return [URLQueryItem(name: "key", value: key),
+            return [URLQueryItem(name: "key", value: Bundle.main.KOBIS_API_KEY),
                     URLQueryItem(name: "movieCd", value: movieCode)]
         }
-    }
-    
-    private var key: String {
-        return "fb92260b76d9959bbf3ab69c991d8985"
     }
     
     var url: URL? {
