@@ -151,9 +151,7 @@
 				3C35A8092A6F68B1008BB5C2 /* View */,
 				3C35A80A2A6F68BB008BB5C2 /* Controller */,
 				3CF561332A77C91C0048D14D /* Error */,
-				63DF20F72970E1A1005DF7D1 /* Assets.xcassets */,
-				63DF20FC2970E1A1005DF7D1 /* Info.plist */,
-				AC463E0E2A78027C00FC464D /* KobisAPIKey.plist */,
+				AC9BDB3C2A78CD14000FA75F /* Resource */,
 			);
 			path = BoxOffice;
 			sourceTree = "<group>";
@@ -183,6 +181,16 @@
 				3CF5610E2A73E7830048D14D /* URL+.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		AC9BDB3C2A78CD14000FA75F /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				63DF20F72970E1A1005DF7D1 /* Assets.xcassets */,
+				63DF20FC2970E1A1005DF7D1 /* Info.plist */,
+				AC463E0E2A78027C00FC464D /* KobisAPIKey.plist */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
