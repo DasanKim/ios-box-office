@@ -22,14 +22,14 @@ class BoxOfficeViewController: UIViewController {
                     let decodedData = try DecodingManager.decodeJSON(type: BoxOffice.self, data: data)
                     print(decodedData)
                 } catch DataError.notFoundAsset {
-                    print(DataError.notFoundAsset.localizedDescription)
+                    os_log("%{public}@", type: .default, DataError.notFoundAsset.localizedDescription)
                 } catch DataError.failedDecoding {
-                    print(DataError.failedDecoding.localizedDescription)
+                    os_log("%{public}@", type: .default, DataError.failedDecoding.localizedDescription)
                 } catch {
                     os_log("알 수 없는 오류입니다.", type: .default)
                 }
             case .failure(let error):
-                print(error.localizedDescription)
+                os_log("%{public}@", type: .default, error.localizedDescription)
             }
         }
         
@@ -40,14 +40,14 @@ class BoxOfficeViewController: UIViewController {
                     let decodedData = try DecodingManager.decodeJSON(type: Movie.self, data: data)
                     print(decodedData)
                 } catch DataError.notFoundAsset {
-                    print(DataError.notFoundAsset.localizedDescription)
+                    os_log("%{public}@", type: .default, DataError.notFoundAsset.localizedDescription)
                 } catch DataError.failedDecoding {
-                    print(DataError.failedDecoding.localizedDescription)
+                    os_log("%{public}@", type: .default, DataError.failedDecoding.localizedDescription)
                 } catch {
                     os_log("알 수 없는 오류입니다.", type: .default)
                 }
             case .failure(let error):
-                print(error.localizedDescription)
+                os_log("%{public}@", type: .default, error.localizedDescription)
             }
         }
     }
