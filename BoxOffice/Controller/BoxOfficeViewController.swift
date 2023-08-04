@@ -8,8 +8,15 @@
 import UIKit
 import OSLog
 
-class BoxOfficeViewController: UIViewController {
+private enum Section: Hashable {
+    case main
+}
 
+class BoxOfficeViewController: UIViewController {
+    private var dataSource: UICollectionViewDiffableDataSource<Section, BoxOfficeData>! = nil
+    private var collectionView: UICollectionView! = nil
+    private var items: [BoxOfficeData] = [BoxOfficeData]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
