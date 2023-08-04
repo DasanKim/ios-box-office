@@ -64,6 +64,7 @@ final class BoxOfficeCell: UICollectionViewListCell {
         
         self.addSubview(stackView)
         self.accessories = [.disclosureIndicator()]
+        setUpStackViewConstraints()
     }
 }
 

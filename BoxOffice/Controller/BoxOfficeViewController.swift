@@ -20,6 +20,9 @@ class BoxOfficeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureHierarchy()
+        configureDataSource()
+        
         let networkManager = NetworkManager()
         
         networkManager.fetchData(url: KobisOpenAPI.boxOffice(targetDate: "20220102").url) { result in
@@ -28,6 +31,18 @@ class BoxOfficeViewController: UIViewController {
                 do {
                     let decodedData = try DecodingManager.decodeJSON(type: BoxOffice.self, data: data)
                     print(decodedData)
+                    
+                    let boxOfficeItems = decodedData.boxOfficeResult.dailyBoxOfficeList
+                    
+                    boxOfficeItems.forEach { item in
+                        self.items.append(item)
+                    }
+                    
+                    var snapshot = NSDiffableDataSourceSnapshot<Section, BoxOfficeData>()
+                    snapshot.appendSections([.main])
+                    snapshot.appendItems(self.items)
+                    self.dataSource.apply(snapshot, animatingDifferences: true)
+                    
                 } catch DataError.notFoundAsset {
                     os_log("%{public}@", type: .default, DataError.notFoundAsset.localizedDescription)
                 } catch DataError.failedDecoding {
