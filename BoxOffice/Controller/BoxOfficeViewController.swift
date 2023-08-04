@@ -39,24 +39,6 @@ class BoxOfficeViewController: UIViewController {
                 os_log("%{public}@", type: .default, error.localizedDescription)
             }
         }
-        
-        networkManager.fetchData(url: KobisOpenAPI.movie(movieCode: "20124079").url) { result in
-            switch result {
-            case .success(let data):
-                do {
-                    let decodedData = try DecodingManager.decodeJSON(type: Movie.self, data: data)
-                    print(decodedData)
-                } catch DataError.notFoundAsset {
-                    os_log("%{public}@", type: .default, DataError.notFoundAsset.localizedDescription)
-                } catch DataError.failedDecoding {
-                    os_log("%{public}@", type: .default, DataError.failedDecoding.localizedDescription)
-                } catch {
-                    os_log("알 수 없는 오류입니다.", type: .default)
-                }
-            case .failure(let error):
-                os_log("%{public}@", type: .default, error.localizedDescription)
-            }
-        }
     }
 }
 
@@ -64,5 +46,27 @@ extension BoxOfficeViewController {
     private func createLayout() -> UICollectionViewLayout {
         let configuration = UICollectionLayoutListConfiguration(appearance: .plain)
         return UICollectionViewCompositionalLayout.list(using: configuration)
+    }
+    
+    private func configureHierarchy() {
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
+        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(collectionView)
+    }
+    
+    private func configureDataSource() {
+        let cellRegistration = UICollectionView.CellRegistration<BoxOfficeCell, BoxOfficeData> { (cell, indexPath, item) in
+            cell.configureCell(with: item)
+        }
+        
+        dataSource = UICollectionViewDiffableDataSource<Section, BoxOfficeData>(collectionView: collectionView) {
+            (collectionView: UICollectionView, indexPath: IndexPath, identifier: BoxOfficeData) -> UICollectionViewListCell? in
+            return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: identifier)
+        }
+        
+        var snapshot = NSDiffableDataSourceSnapshot<Section, BoxOfficeData>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(items)
+        dataSource.apply(snapshot, animatingDifferences: false)
     }
 }
