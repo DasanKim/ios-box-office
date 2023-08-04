@@ -20,6 +20,7 @@ class BoxOfficeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = "20220102"
         configureHierarchy()
         configureDataSource()
         
