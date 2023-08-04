@@ -59,3 +59,10 @@ class BoxOfficeViewController: UIViewController {
         }
     }
 }
+
+extension BoxOfficeViewController {
+    private func createLayout() -> UICollectionViewLayout {
+        let configuration = UICollectionLayoutListConfiguration(appearance: .plain)
+        return UICollectionViewCompositionalLayout.list(using: configuration)
+    }
+}
