@@ -41,7 +41,7 @@ final class BoxOfficeCell: UICollectionViewListCell {
         return label
     }()
     
-    private func configureLabel(with boxOfficeData: BoxOfficeData) {
+    private func configureLabel(with boxOfficeData: BoxOfficeData, _ rankIntensityText: NSMutableAttributedString) {
         rankLabel.text = boxOfficeData.rank
         rankIntensityLabel.text = boxOfficeData.rankIntensity
         movieNameLabel.text = boxOfficeData.movieName
@@ -53,10 +53,11 @@ final class BoxOfficeCell: UICollectionViewListCell {
         }
         
         audienceLabel.text = "오늘 \(audienceCount) / 총 \(audienceAccumulate)"
+        rankIntensityLabel.attributedText = rankIntensityText
     }
         
-    func configureCell(with boxOfficeData: BoxOfficeData) {
-        configureLabel(with: boxOfficeData)
+    func configureCell(with boxOfficeData: BoxOfficeData, _ rankIntensityText: NSMutableAttributedString) {
+        configureLabel(with: boxOfficeData, rankIntensityText)
         
         rankStackView.addArrangedSubview(rankLabel)
         rankStackView.addArrangedSubview(rankIntensityLabel)

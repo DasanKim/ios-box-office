@@ -16,7 +16,7 @@ class BoxOfficeViewController: UIViewController {
     private var dataSource: UICollectionViewDiffableDataSource<Section, BoxOfficeData>! = nil
     private var collectionView: UICollectionView! = nil
     private var items = [BoxOfficeData]()
-    private let yesterday = TargetDate(dayFromNow: -1)
+    private let yesterday = TargetDate(dayFromNow: -579)
     private let activityIndicatorView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
@@ -76,7 +76,8 @@ extension BoxOfficeViewController {
     
     private func configureDataSource() {
         let cellRegistration = UICollectionView.CellRegistration<BoxOfficeCell, BoxOfficeData> { (cell, indexPath, item) in
-            cell.configureCell(with: item)
+            let rankIntensityText = self.configureRankIntensity(with: item)
+            cell.configureCell(with: item, rankIntensityText)
         }
         
         dataSource = UICollectionViewDiffableDataSource<Section, BoxOfficeData>(collectionView: collectionView) {
@@ -88,6 +89,35 @@ extension BoxOfficeViewController {
         snapshot.appendSections([.main])
         snapshot.appendItems(items)
         dataSource.apply(snapshot, animatingDifferences: false)
+    }
+    
+    private func configureRankIntensity(with boxOfficeData: BoxOfficeData) -> NSMutableAttributedString {
+        let rankOldOrNew = boxOfficeData.rankOldOrNew
+        guard let rankIntensity = Int(boxOfficeData.rankIntensity) else { return NSMutableAttributedString(string: "")}
+        
+        if rankOldOrNew == "OLD" {
+            var text: String
+            var attributedString: NSMutableAttributedString
+
+            if rankIntensity < 0 {
+                text = "▼\(-rankIntensity)"
+                attributedString = NSMutableAttributedString(string: text)
+                attributedString.addAttribute(.foregroundColor, value: UIColor.systemBlue, range: (text as NSString).range(of: "▼"))
+                return attributedString
+            } else if rankIntensity > 0 {
+                text = "▲\(rankIntensity)"
+                attributedString = NSMutableAttributedString(string: text)
+                attributedString.addAttribute(.foregroundColor, value: UIColor.systemRed, range: (text as NSString).range(of: "▲"))
+                return attributedString
+            } else {
+                return NSMutableAttributedString(string: "-")
+            }
+        } else {
+            let text = " 신작 "
+            let attributedString = NSMutableAttributedString(string: text)
+            attributedString.addAttribute(.foregroundColor, value: UIColor.systemRed, range: (text as NSString).range(of: "신작"))
+            return attributedString
+        }
     }
 }
 
