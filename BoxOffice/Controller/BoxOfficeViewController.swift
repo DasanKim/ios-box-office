@@ -15,18 +15,19 @@ private enum Section: Hashable {
 class BoxOfficeViewController: UIViewController {
     private var dataSource: UICollectionViewDiffableDataSource<Section, BoxOfficeData>! = nil
     private var collectionView: UICollectionView! = nil
-    private var items: [BoxOfficeData] = [BoxOfficeData]()
+    private var items = [BoxOfficeData]()
+    private let yesterday = TargetDate(dayFromNow: -1)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "20220102"
+        navigationItem.title = yesterday.formatByHypen()
         configureHierarchy()
         configureDataSource()
         
         let networkManager = NetworkManager()
         
-        networkManager.fetchData(url: KobisOpenAPI.boxOffice(targetDate: "20220102").url) { result in
+        networkManager.fetchData(url: KobisOpenAPI.boxOffice(targetDate: yesterday.formatNoSeparator()).url) { result in
             switch result {
             case .success(let data):
                 do {

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3C35A80D2A6F9937008BB5C2 /* DecodingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C35A80C2A6F9937008BB5C2 /* DecodingManager.swift */; };
 		3C35A80F2A6F9A17008BB5C2 /* DataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C35A80E2A6F9A17008BB5C2 /* DataError.swift */; };
+		3CB38E9A2A7FEB6C0070E63C /* TargetDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB38E992A7FEB6C0070E63C /* TargetDate.swift */; };
 		3CF5610B2A73D30F0048D14D /* URLConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5610A2A73D30F0048D14D /* URLConfigurable.swift */; };
 		3CF5610D2A73D3540048D14D /* KobisOpenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5610C2A73D3540048D14D /* KobisOpenAPI.swift */; };
 		3CF5610F2A73E7830048D14D /* URL+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5610E2A73E7830048D14D /* URL+.swift */; };
@@ -41,6 +42,7 @@
 /* Begin PBXFileReference section */
 		3C35A80C2A6F9937008BB5C2 /* DecodingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingManager.swift; sourceTree = "<group>"; };
 		3C35A80E2A6F9A17008BB5C2 /* DataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataError.swift; sourceTree = "<group>"; };
+		3CB38E992A7FEB6C0070E63C /* TargetDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetDate.swift; sourceTree = "<group>"; };
 		3CF5610A2A73D30F0048D14D /* URLConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConfigurable.swift; sourceTree = "<group>"; };
 		3CF5610C2A73D3540048D14D /* KobisOpenAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KobisOpenAPI.swift; sourceTree = "<group>"; };
 		3CF5610E2A73E7830048D14D /* URL+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+.swift"; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				3C35A80C2A6F9937008BB5C2 /* DecodingManager.swift */,
 				AC11E7E42A729FE3008A84B0 /* NetworkManager.swift */,
 				3CF5610E2A73E7830048D14D /* URL+.swift */,
+				3CB38E992A7FEB6C0070E63C /* TargetDate.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				AC02E17C2A6F703D00C6A91B /* BoxOffice.swift in Sources */,
 				3C35A80F2A6F9A17008BB5C2 /* DataError.swift in Sources */,
 				3CF5610F2A73E7830048D14D /* URL+.swift in Sources */,
+				3CB38E9A2A7FEB6C0070E63C /* TargetDate.swift in Sources */,
 				3CF561352A77C9480048D14D /* NetworkError.swift in Sources */,
 				3CF5610B2A73D30F0048D14D /* URLConfigurable.swift in Sources */,
 				3C35A80D2A6F9937008BB5C2 /* DecodingManager.swift in Sources */,
