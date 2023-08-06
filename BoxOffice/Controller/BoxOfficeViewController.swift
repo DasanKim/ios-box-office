@@ -71,6 +71,7 @@ extension BoxOfficeViewController {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(collectionView)
+        configureRefreshControl()
     }
     
     private func configureDataSource() {
@@ -101,5 +102,17 @@ extension BoxOfficeViewController {
     
     private func stopActivityIndicator() {
         activityIndicatorView.stopAnimating()
+    }
+    
+    private func configureRefreshControl() {
+        collectionView.refreshControl = UIRefreshControl()
+        collectionView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
+    }
+    
+    @objc func handleRefreshControl() {
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+            self.collectionView.refreshControl?.endRefreshing()
+        }
     }
 }
