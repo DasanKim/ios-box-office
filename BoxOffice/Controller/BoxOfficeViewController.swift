@@ -17,13 +17,15 @@ class BoxOfficeViewController: UIViewController {
     private var collectionView: UICollectionView! = nil
     private var items = [BoxOfficeData]()
     private let yesterday = TargetDate(dayFromNow: -1)
+    private let activityIndicatorView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = yesterday.formatByHypen()
+        navigationItem.title = yesterday.formatByHyphen()
         configureHierarchy()
         configureDataSource()
+        configureActivityIndicatorView()
         
         let networkManager = NetworkManager()
         
@@ -44,7 +46,7 @@ class BoxOfficeViewController: UIViewController {
                     snapshot.appendSections([.main])
                     snapshot.appendItems(self.items)
                     self.dataSource.apply(snapshot, animatingDifferences: true)
-                    
+                    self.stopActivityIndicator()
                 } catch DataError.notFoundAsset {
                     os_log("%{public}@", type: .default, DataError.notFoundAsset.localizedDescription)
                 } catch DataError.failedDecoding {
@@ -85,5 +87,19 @@ extension BoxOfficeViewController {
         snapshot.appendSections([.main])
         snapshot.appendItems(items)
         dataSource.apply(snapshot, animatingDifferences: false)
+    }
+}
+
+extension BoxOfficeViewController {
+    private func configureActivityIndicatorView() {
+        view.addSubview(activityIndicatorView)
+        
+        activityIndicatorView.center = view.center
+        activityIndicatorView.style = .large
+        activityIndicatorView.startAnimating()
+    }
+    
+    private func stopActivityIndicator() {
+        activityIndicatorView.stopAnimating()
     }
 }

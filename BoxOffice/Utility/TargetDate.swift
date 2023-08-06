@@ -18,7 +18,7 @@ struct TargetDate {
         self.dayToSecond = TimeInterval(dayFromNow) * oneDayToSecond
     }
     
-    func formatByHypen() -> String {
+    func formatByHyphen() -> String {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
         return dateFormatter.string(from:Date(timeIntervalSinceNow: dayToSecond))
