@@ -9,9 +9,6 @@ import UIKit
 
 final class BoxOfficeCell: UICollectionViewListCell {
     static let Identifier = "boxOfficeCell"
-    private var stackView = UIStackView()
-    private var rankStackView = UIStackView()
-    private var titleStackView = UIStackView()
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -58,6 +55,29 @@ final class BoxOfficeCell: UICollectionViewListCell {
         return label
     }()
     
+    private var stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        
+        return stackView
+    }()
+    
+    private var rankStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        
+        return stackView
+    }()
+    
+    private var titleStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.distribution = .fillProportionally
+        
+        return stackView
+    }()
+    
     private func configureLabel(with boxOfficeData: BoxOfficeData, _ rankIntensityText: NSMutableAttributedString) {
         rankLabel.text = boxOfficeData.rank
         rankIntensityLabel.text = boxOfficeData.rankIntensity
@@ -82,13 +102,6 @@ final class BoxOfficeCell: UICollectionViewListCell {
         titleStackView.addArrangedSubview(audienceLabel)
         stackView.addArrangedSubview(rankStackView)
         stackView.addArrangedSubview(titleStackView)
-        
-        rankStackView.axis = .vertical
-        titleStackView.axis = .vertical
-        stackView.axis = .horizontal
-        stackView.alignment = .center
-        
-        titleStackView.distribution = .fillProportionally
         
         self.addSubview(stackView)
         self.accessories = [.disclosureIndicator()]
