@@ -113,7 +113,7 @@ extension BoxOfficeViewController {
                 return NSMutableAttributedString(string: "-")
             }
         } else {
-            let text = " 신작 "
+            let text = "신작"
             let attributedString = NSMutableAttributedString(string: text)
             attributedString.addAttribute(.foregroundColor, value: UIColor.systemRed, range: (text as NSString).range(of: "신작"))
             return attributedString

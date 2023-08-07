@@ -13,6 +13,11 @@ final class BoxOfficeCell: UICollectionViewListCell {
     private var rankStackView = UIStackView()
     private var titleStackView = UIStackView()
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        rankIntensityLabel.textColor = .black
+    }
+    
     private let rankLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .largeTitle)
