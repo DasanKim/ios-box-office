@@ -134,6 +134,7 @@ extension BoxOfficeViewController {
     @objc func handleRefreshControl() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
             self.loadData()
+            self.configureNavigationItem(title: self.yesterday.formatByHyphen())
             self.collectionView.refreshControl?.endRefreshing()
         }
     }
