@@ -9,9 +9,7 @@ import Foundation
 
 struct NetworkManager {
     func fetchData(url: URL?, completionHandler: @escaping ((Data?, NetworkError?)) -> Void) {
-        guard let url = url else {
-            return
-        }
+        guard let url = url else { return }
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if error != nil {

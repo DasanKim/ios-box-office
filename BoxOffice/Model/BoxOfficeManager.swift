@@ -25,7 +25,6 @@ final class BoxOfficeManager {
                 
                 if let data = data {
                     let decodedData = try DecodingManager.decodeJSON(type: BoxOffice.self, data: data)
-                    print(decodedData)
                     let boxOfficeItems = decodedData.boxOfficeResult.dailyBoxOfficeList
                     completionHandler(.success(boxOfficeItems))
                 }

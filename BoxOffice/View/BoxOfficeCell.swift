@@ -85,9 +85,7 @@ final class BoxOfficeCell: UICollectionViewListCell {
         
         guard let audienceCount = CountFormatter.decimal.string(for: Int(boxOfficeData.audienceCount)),
               let audienceAccumulate = CountFormatter.decimal.string(for: Int(boxOfficeData.audienceAccumulate))
-        else {
-            return
-        }
+        else { return }
         
         audienceLabel.text = "오늘 \(audienceCount) / 총 \(audienceAccumulate)"
         rankIntensityLabel.attributedText = rankIntensityText

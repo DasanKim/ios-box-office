@@ -11,6 +11,7 @@ struct CountFormatter {
     static var decimal: NumberFormatter = {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
+        
         return numberFormatter
     }()
 }

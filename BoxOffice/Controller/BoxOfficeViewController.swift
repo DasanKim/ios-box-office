@@ -53,6 +53,7 @@ extension BoxOfficeViewController {
     
     private func createLayout() -> UICollectionViewLayout {
         let configuration = UICollectionLayoutListConfiguration(appearance: .plain)
+        
         return UICollectionViewCompositionalLayout.list(using: configuration)
     }
     
@@ -85,21 +86,26 @@ extension BoxOfficeViewController {
     }
     
     private func configureRankIntensity(with boxOfficeData: BoxOfficeData) -> NSMutableAttributedString {
-        let rankOldOrNew = boxOfficeData.rankOldOrNew
-        guard let rankIntensity = Int(boxOfficeData.rankIntensity) else { return NSMutableAttributedString(string: "")}
         var text: String
         var attributedString: NSMutableAttributedString
+        let rankOldOrNew = boxOfficeData.rankOldOrNew
+        
+        guard let rankIntensity = Int(boxOfficeData.rankIntensity) else {
+            return NSMutableAttributedString(string: "")
+        }
         
         if rankOldOrNew == "OLD" {
             if rankIntensity < 0 {
                 text = "▼\(-rankIntensity)"
                 attributedString = NSMutableAttributedString(string: text)
                 attributedString.addAttribute(.foregroundColor, value: UIColor.systemBlue, range: (text as NSString).range(of: "▼"))
+                
                 return attributedString
             } else if rankIntensity > 0 {
                 text = "▲\(rankIntensity)"
                 attributedString = NSMutableAttributedString(string: text)
                 attributedString.addAttribute(.foregroundColor, value: UIColor.systemRed, range: (text as NSString).range(of: "▲"))
+                
                 return attributedString
             } else {
                 return NSMutableAttributedString(string: "-")
@@ -108,6 +114,7 @@ extension BoxOfficeViewController {
             text = "신작"
             attributedString = NSMutableAttributedString(string: text)
             attributedString.addAttribute(.foregroundColor, value: UIColor.systemRed, range: (text as NSString).range(of: "신작"))
+            
             return attributedString
         }
     }
