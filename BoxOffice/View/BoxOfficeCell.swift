@@ -22,6 +22,9 @@ final class BoxOfficeCell: UICollectionViewListCell {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .largeTitle)
         label.textAlignment = .center
+        label.adjustsFontForContentSizeCategory = true
+        label.numberOfLines = 1
+        
         return label
     }()
     
@@ -29,6 +32,9 @@ final class BoxOfficeCell: UICollectionViewListCell {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .body)
         label.textAlignment = .center
+        label.adjustsFontForContentSizeCategory = true
+        label.numberOfLines = 1
+        
         return label
     }()
     
@@ -36,6 +42,9 @@ final class BoxOfficeCell: UICollectionViewListCell {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .title2)
         label.textAlignment = .left
+        label.adjustsFontForContentSizeCategory = true
+        label.numberOfLines = 1
+        
         return label
     }()
     
@@ -43,6 +52,9 @@ final class BoxOfficeCell: UICollectionViewListCell {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .body)
         label.textAlignment = .left
+        label.adjustsFontForContentSizeCategory = true
+        label.numberOfLines = 1
+        
         return label
     }()
     
