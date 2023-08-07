@@ -11,6 +11,7 @@
 		3C35A80F2A6F9A17008BB5C2 /* DataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C35A80E2A6F9A17008BB5C2 /* DataError.swift */; };
 		3CB38E9A2A7FEB6C0070E63C /* TargetDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB38E992A7FEB6C0070E63C /* TargetDate.swift */; };
 		3CB38E9C2A7FF7690070E63C /* CountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB38E9B2A7FF7690070E63C /* CountFormatter.swift */; };
+		3CB38E9F2A8141CA0070E63C /* ConstraintsNamespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB38E9E2A8141CA0070E63C /* ConstraintsNamespace.swift */; };
 		3CF5610B2A73D30F0048D14D /* URLConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5610A2A73D30F0048D14D /* URLConfigurable.swift */; };
 		3CF5610D2A73D3540048D14D /* KobisOpenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5610C2A73D3540048D14D /* KobisOpenAPI.swift */; };
 		3CF5610F2A73E7830048D14D /* URL+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5610E2A73E7830048D14D /* URL+.swift */; };
@@ -46,6 +47,7 @@
 		3C35A80E2A6F9A17008BB5C2 /* DataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataError.swift; sourceTree = "<group>"; };
 		3CB38E992A7FEB6C0070E63C /* TargetDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetDate.swift; sourceTree = "<group>"; };
 		3CB38E9B2A7FF7690070E63C /* CountFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountFormatter.swift; sourceTree = "<group>"; };
+		3CB38E9E2A8141CA0070E63C /* ConstraintsNamespace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintsNamespace.swift; sourceTree = "<group>"; };
 		3CF5610A2A73D30F0048D14D /* URLConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConfigurable.swift; sourceTree = "<group>"; };
 		3CF5610C2A73D3540048D14D /* KobisOpenAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KobisOpenAPI.swift; sourceTree = "<group>"; };
 		3CF5610E2A73E7830048D14D /* URL+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+.swift"; sourceTree = "<group>"; };
@@ -128,6 +130,14 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
+		3CB38E9D2A8141A30070E63C /* Namespace */ = {
+			isa = PBXGroup;
+			children = (
+				3CB38E9E2A8141CA0070E63C /* ConstraintsNamespace.swift */,
+			);
+			path = Namespace;
+			sourceTree = "<group>";
+		};
 		3CF561332A77C91C0048D14D /* Error */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +173,7 @@
 				3C35A8082A6F68A9008BB5C2 /* Model */,
 				3C35A8092A6F68B1008BB5C2 /* View */,
 				3C35A80A2A6F68BB008BB5C2 /* Controller */,
+				3CB38E9D2A8141A30070E63C /* Namespace */,
 				3CF561332A77C91C0048D14D /* Error */,
 				AC9BDB3C2A78CD14000FA75F /* Resource */,
 			);
@@ -326,6 +337,7 @@
 				3CF561352A77C9480048D14D /* NetworkError.swift in Sources */,
 				3CB38E9C2A7FF7690070E63C /* CountFormatter.swift in Sources */,
 				3CF5610B2A73D30F0048D14D /* URLConfigurable.swift in Sources */,
+				3CB38E9F2A8141CA0070E63C /* ConstraintsNamespace.swift in Sources */,
 				3C35A80D2A6F9937008BB5C2 /* DecodingManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

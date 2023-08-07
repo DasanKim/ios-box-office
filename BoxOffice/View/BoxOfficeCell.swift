@@ -101,13 +101,33 @@ extension BoxOfficeCell {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            rankStackView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.23),
-            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -(self.frame.width * 0.12)),
-            stackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 14),
-            stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -14),
-            titleStackView.topAnchor.constraint(equalTo: stackView.topAnchor, constant: 5),
-            titleStackView.bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: -5)
+            rankStackView.widthAnchor.constraint(
+                equalTo: self.widthAnchor,
+                multiplier: ConstraintsNamespace.rankStackViewFromCellWidth
+            ),
+            stackView.leadingAnchor.constraint(
+                equalTo: self.leadingAnchor
+            ),
+            stackView.trailingAnchor.constraint(
+                equalTo: self.trailingAnchor,
+                constant: -(self.frame.width * ConstraintsNamespace.stackViewFromCellTrailing)
+            ),
+            stackView.topAnchor.constraint(
+                equalTo: self.topAnchor,
+                constant: ConstraintsNamespace.stackViewFromCellTop
+            ),
+            stackView.bottomAnchor.constraint(
+                equalTo: self.bottomAnchor,
+                constant: ConstraintsNamespace.stackViewFromCellBottom
+            ),
+            titleStackView.topAnchor.constraint(
+                equalTo: stackView.topAnchor,
+                constant: ConstraintsNamespace.titleViewFromCellTop
+            ),
+            titleStackView.bottomAnchor.constraint(
+                equalTo: stackView.bottomAnchor,
+                constant: ConstraintsNamespace.titleViewFromCellBottom
+            )
         ])
     }
 }
