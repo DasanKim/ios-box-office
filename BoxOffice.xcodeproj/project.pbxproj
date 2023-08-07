@@ -28,6 +28,7 @@
 		AC11E7E52A729FE3008A84B0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC11E7E42A729FE3008A84B0 /* NetworkManager.swift */; };
 		AC9BDB3E2A78D083000FA75F /* KobisAPIKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC9BDB3D2A78D083000FA75F /* KobisAPIKey.plist */; };
 		ACDC76492A7D4DAA00D324E5 /* BoxOfficeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDC76482A7D4DAA00D324E5 /* BoxOfficeCell.swift */; };
+		ACF5C62E2A811956005CB910 /* BoxOfficeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF5C62D2A811956005CB910 /* BoxOfficeManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		AC2C7AF12A6FC21C000CD35F /* BoxOffice.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = BoxOffice.xctestplan; sourceTree = "<group>"; };
 		AC9BDB3D2A78D083000FA75F /* KobisAPIKey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = KobisAPIKey.plist; sourceTree = "<group>"; };
 		ACDC76482A7D4DAA00D324E5 /* BoxOfficeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeCell.swift; sourceTree = "<group>"; };
+		ACF5C62D2A811956005CB910 /* BoxOfficeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				3CF5610A2A73D30F0048D14D /* URLConfigurable.swift */,
 				3CF5610C2A73D3540048D14D /* KobisOpenAPI.swift */,
 				3CF561372A78D79F0048D14D /* Bundle+.swift */,
+				ACF5C62D2A811956005CB910 /* BoxOfficeManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				AC02E17C2A6F703D00C6A91B /* BoxOffice.swift in Sources */,
 				3C35A80F2A6F9A17008BB5C2 /* DataError.swift in Sources */,
 				3CF5610F2A73E7830048D14D /* URL+.swift in Sources */,
+				ACF5C62E2A811956005CB910 /* BoxOfficeManager.swift in Sources */,
 				3CB38E9A2A7FEB6C0070E63C /* TargetDate.swift in Sources */,
 				3CF561352A77C9480048D14D /* NetworkError.swift in Sources */,
 				3CB38E9C2A7FF7690070E63C /* CountFormatter.swift in Sources */,
