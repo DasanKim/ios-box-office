@@ -132,8 +132,8 @@ extension BoxOfficeViewController {
     }
     
     @objc func handleRefreshControl() {
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+            self.loadData()
             self.collectionView.refreshControl?.endRefreshing()
         }
     }
