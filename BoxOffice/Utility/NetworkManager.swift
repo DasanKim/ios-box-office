@@ -25,15 +25,13 @@ struct NetworkManager {
                 return
             }
             
-            DispatchQueue.main.async {
-                guard let data = data else {
-                    completionHandler((nil, NetworkError.noData))
-                    
-                    return
-                }
+            guard let data = data else {
+                completionHandler((nil, NetworkError.noData))
                 
-                completionHandler((data, nil))
+                return
             }
+            
+            completionHandler((data, nil))
         }
         
         task.resume()

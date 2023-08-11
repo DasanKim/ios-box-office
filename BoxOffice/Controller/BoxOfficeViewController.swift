@@ -60,6 +60,7 @@ extension BoxOfficeViewController {
     private func configureHierarchy() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
         view.addSubview(collectionView)
         configureRefreshControl()
     }
