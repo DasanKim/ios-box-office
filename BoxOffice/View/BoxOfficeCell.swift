@@ -95,7 +95,7 @@ final class BoxOfficeCell: UICollectionViewListCell {
         stackView.addArrangedSubview(rankStackView)
         stackView.addArrangedSubview(titleStackView)
         
-        self.addSubview(stackView)
+        contentView.addSubview(stackView)
         self.accessories = [.disclosureIndicator()]
         setUpStackViewConstraints()
     }
@@ -120,31 +120,31 @@ extension BoxOfficeCell {
         
         NSLayoutConstraint.activate([
             rankStackView.widthAnchor.constraint(
-                equalTo: self.widthAnchor,
-                multiplier: ConstraintsNamespace.rankStackViewFromCellWidth
+                equalTo: contentView.widthAnchor,
+                multiplier: ConstraintsNamespace.rankStackViewFromContentViewWidth
             ),
             stackView.leadingAnchor.constraint(
-                equalTo: self.leadingAnchor
+                equalTo: contentView.leadingAnchor
             ),
             stackView.trailingAnchor.constraint(
-                equalTo: self.trailingAnchor,
-                constant: -(self.frame.width * ConstraintsNamespace.stackViewFromCellTrailing)
+                equalTo: contentView.trailingAnchor,
+                constant: ConstraintsNamespace.stackViewFromContentViewTrailing
             ),
             stackView.topAnchor.constraint(
-                equalTo: self.topAnchor,
-                constant: ConstraintsNamespace.stackViewFromCellTop
+                equalTo: contentView.topAnchor,
+                constant: ConstraintsNamespace.stackViewFromContentViewTop
             ),
             stackView.bottomAnchor.constraint(
-                equalTo: self.bottomAnchor,
-                constant: ConstraintsNamespace.stackViewFromCellBottom
+                equalTo: contentView.bottomAnchor,
+                constant: ConstraintsNamespace.stackViewFromContentViewBottom
             ),
             titleStackView.topAnchor.constraint(
                 equalTo: stackView.topAnchor,
-                constant: ConstraintsNamespace.titleViewFromCellTop
+                constant: ConstraintsNamespace.titleViewFromContentViewTop
             ),
             titleStackView.bottomAnchor.constraint(
                 equalTo: stackView.bottomAnchor,
-                constant: ConstraintsNamespace.titleViewFromCellBottom
+                constant: ConstraintsNamespace.titleViewFromContentViewBottom
             )
         ])
     }
