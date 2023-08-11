@@ -82,7 +82,10 @@ extension BoxOfficeViewController {
         var snapshot = NSDiffableDataSourceSnapshot<Section, BoxOfficeData>()
         snapshot.appendSections([.main])
         snapshot.appendItems(items)
-        dataSource.apply(snapshot, animatingDifferences: true)
+        
+        DispatchQueue.main.async {
+            self.dataSource.apply(snapshot, animatingDifferences: true)
+        }
     }
     
     private func configureRankIntensity(with boxOfficeData: BoxOfficeData) -> NSMutableAttributedString {
