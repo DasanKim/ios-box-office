@@ -18,13 +18,13 @@ struct TargetDate {
         self.dayToSecond = TimeInterval(dayFromNow) * oneDayToSecond
     }
     
-    func formatByHyphen() -> String {
+    func formattedWithHyphen() -> String {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
         return dateFormatter.string(from:Date(timeIntervalSinceNow: dayToSecond))
     }
     
-    func formatNoSeparator() -> String {
+    func formattedWithoutSeparator() -> String {
         dateFormatter.dateFormat = "yyyyMMdd"
         
         return dateFormatter.string(from: Date(timeIntervalSinceNow: dayToSecond))

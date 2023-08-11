@@ -26,7 +26,7 @@ final class BoxOfficeViewController: UIViewController {
         configureHierarchy()
         configureDataSource()
         configureActivityIndicatorView()
-        configureNavigationItem(title: yesterday.formatByHyphen())
+        configureNavigationItem(title: yesterday.formattedWithHyphen())
     }
 }
 
@@ -141,7 +141,7 @@ extension BoxOfficeViewController {
     @objc func handleRefreshControl() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
             self.loadData()
-            self.configureNavigationItem(title: self.yesterday.formatByHyphen())
+            self.configureNavigationItem(title: self.yesterday.formattedWithHyphen())
             self.collectionView.refreshControl?.endRefreshing()
         }
     }

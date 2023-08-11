@@ -15,7 +15,7 @@ final class BoxOfficeManager {
     func fetchBoxOfficeData(completionHandler: @escaping (Result<[BoxOfficeData]?, Error>) -> Void) {
         let networkManager = NetworkManager()
         
-        networkManager.fetchData(url: KobisOpenAPI.boxOffice(targetDate: targetDate.formatNoSeparator()).url) { (data, error) in
+        networkManager.fetchData(url: KobisOpenAPI.boxOffice(targetDate: targetDate.formattedWithoutSeparator()).url) { (data, error) in
             do {
                 if let error = error {
                     completionHandler(.failure(error))
