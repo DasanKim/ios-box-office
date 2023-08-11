@@ -129,7 +129,14 @@ extension BoxOfficeViewController {
         
         activityIndicatorView.center = view.center
         activityIndicatorView.style = .large
-        activityIndicatorView.startAnimating()
+        
+        startActivityIndicator()
+    }
+    
+    private func startActivityIndicator() {
+        DispatchQueue.main.async {
+            self.activityIndicatorView.startAnimating()
+        }
     }
     
     private func stopActivityIndicator() {
