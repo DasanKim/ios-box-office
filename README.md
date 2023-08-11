@@ -124,7 +124,7 @@
 
 | 앱 시작시 로딩 | 12시 새로고침(날짜변경) |
 | :--------: | :--------: |
-| <img src = "https://hackmd.io/_uploads/HyffIP73h.gif" height = "500"> | <img src = "https://hackmd.io/_uploads/B1TbrPXh3.gif" height = "500"> |
+| <img src = "https://hackmd.io/_uploads/HyffIP73h.gif" width = "250"> | <img src = "https://hackmd.io/_uploads/B1TbrPXh3.gif" width = "250"> |
 
 </br>
 
