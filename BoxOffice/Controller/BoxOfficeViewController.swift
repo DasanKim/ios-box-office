@@ -133,7 +133,9 @@ extension BoxOfficeViewController {
     }
     
     private func stopActivityIndicator() {
-        activityIndicatorView.stopAnimating()
+        DispatchQueue.main.async {
+            self.activityIndicatorView.stopAnimating()
+        }
     }
     
     private func configureRefreshControl() {
