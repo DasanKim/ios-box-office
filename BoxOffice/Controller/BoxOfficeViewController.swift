@@ -67,7 +67,7 @@ extension BoxOfficeViewController {
     private func configureDataSource() {
         let cellRegistration = UICollectionView.CellRegistration<BoxOfficeCell, BoxOfficeData> { (cell, indexPath, item) in
             let rankIntensityText = self.configureRankIntensity(with: item)
-            cell.configureCell(with: item, rankIntensityText)
+            cell.updateLabel(with: item, rankIntensityText)
         }
         
         dataSource = UICollectionViewDiffableDataSource<Section, BoxOfficeData>(collectionView: collectionView) {

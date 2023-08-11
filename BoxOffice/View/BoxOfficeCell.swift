@@ -10,6 +10,15 @@ import UIKit
 final class BoxOfficeCell: UICollectionViewListCell {
     static let Identifier = "boxOfficeCell"
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        configureCell()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         rankIntensityLabel.textColor = .black
@@ -78,22 +87,7 @@ final class BoxOfficeCell: UICollectionViewListCell {
         return stackView
     }()
     
-    private func configureLabel(with boxOfficeData: BoxOfficeData, _ rankIntensityText: NSMutableAttributedString) {
-        rankLabel.text = boxOfficeData.rank
-        rankIntensityLabel.text = boxOfficeData.rankIntensity
-        movieNameLabel.text = boxOfficeData.movieName
-        
-        guard let audienceCount = CountFormatter.decimal.string(for: Int(boxOfficeData.audienceCount)),
-              let audienceAccumulate = CountFormatter.decimal.string(for: Int(boxOfficeData.audienceAccumulate))
-        else { return }
-        
-        audienceLabel.text = "오늘 \(audienceCount) / 총 \(audienceAccumulate)"
-        rankIntensityLabel.attributedText = rankIntensityText
-    }
-        
-    func configureCell(with boxOfficeData: BoxOfficeData, _ rankIntensityText: NSMutableAttributedString) {
-        configureLabel(with: boxOfficeData, rankIntensityText)
-        
+    private func configureCell() {
         rankStackView.addArrangedSubview(rankLabel)
         rankStackView.addArrangedSubview(rankIntensityLabel)
         titleStackView.addArrangedSubview(movieNameLabel)
@@ -104,6 +98,19 @@ final class BoxOfficeCell: UICollectionViewListCell {
         self.addSubview(stackView)
         self.accessories = [.disclosureIndicator()]
         setUpStackViewConstraints()
+    }
+    
+    func updateLabel(with boxOfficeData: BoxOfficeData, _ rankIntensityText: NSMutableAttributedString) {
+        rankLabel.text = boxOfficeData.rank
+        rankIntensityLabel.text = boxOfficeData.rankIntensity
+        movieNameLabel.text = boxOfficeData.movieName
+        
+        guard let audienceCount = CountFormatter.decimal.string(for: Int(boxOfficeData.audienceCount)),
+              let audienceAccumulate = CountFormatter.decimal.string(for: Int(boxOfficeData.audienceAccumulate))
+        else { return }
+        
+        audienceLabel.text = "오늘 \(audienceCount) / 총 \(audienceAccumulate)"
+        rankIntensityLabel.attributedText = rankIntensityText
     }
 }
 
