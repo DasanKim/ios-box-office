@@ -95,8 +95,7 @@
 		3C35A8082A6F68A9008BB5C2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AC02E17B2A6F703D00C6A91B /* BoxOffice.swift */,
-				AC11E7DE2A729341008A84B0 /* Movie.swift */,
+				ACDAD3E32A876300000604B2 /* DTO */,
 				3CF5610A2A73D30F0048D14D /* URLConfigurable.swift */,
 				3CF5610C2A73D3540048D14D /* KobisOpenAPI.swift */,
 				3CF561372A78D79F0048D14D /* Bundle+.swift */,
@@ -220,6 +219,15 @@
 				AC9BDB3D2A78D083000FA75F /* KobisAPIKey.plist */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		ACDAD3E32A876300000604B2 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				AC02E17B2A6F703D00C6A91B /* BoxOffice.swift */,
+				AC11E7DE2A729341008A84B0 /* Movie.swift */,
+			);
+			path = DTO;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
