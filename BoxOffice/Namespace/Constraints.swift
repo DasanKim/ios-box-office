@@ -1,5 +1,5 @@
 //
-//  ConstraintsNamespace.swift
+//  Constraints.swift
 //  BoxOffice
 //
 //  Created by Dasan & Whales on 2023/08/08.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ConstraintsNamespace {
+enum Constraints {
     static let rankStackViewFromContentViewWidth: CGFloat = 0.23
     static let stackViewFromContentViewTrailing: CGFloat = -10
     static let stackViewFromContentViewTop: CGFloat = 14

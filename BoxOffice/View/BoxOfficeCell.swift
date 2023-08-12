@@ -121,30 +121,30 @@ extension BoxOfficeCell {
         NSLayoutConstraint.activate([
             rankStackView.widthAnchor.constraint(
                 equalTo: contentView.widthAnchor,
-                multiplier: ConstraintsNamespace.rankStackViewFromContentViewWidth
+                multiplier: Constraints.rankStackViewFromContentViewWidth
             ),
             stackView.leadingAnchor.constraint(
                 equalTo: contentView.leadingAnchor
             ),
             stackView.trailingAnchor.constraint(
                 equalTo: contentView.trailingAnchor,
-                constant: ConstraintsNamespace.stackViewFromContentViewTrailing
+                constant: Constraints.stackViewFromContentViewTrailing
             ),
             stackView.topAnchor.constraint(
                 equalTo: contentView.topAnchor,
-                constant: ConstraintsNamespace.stackViewFromContentViewTop
+                constant: Constraints.stackViewFromContentViewTop
             ),
             stackView.bottomAnchor.constraint(
                 equalTo: contentView.bottomAnchor,
-                constant: ConstraintsNamespace.stackViewFromContentViewBottom
+                constant: Constraints.stackViewFromContentViewBottom
             ),
             titleStackView.topAnchor.constraint(
                 equalTo: stackView.topAnchor,
-                constant: ConstraintsNamespace.titleViewFromContentViewTop
+                constant: Constraints.titleViewFromContentViewTop
             ),
             titleStackView.bottomAnchor.constraint(
                 equalTo: stackView.bottomAnchor,
-                constant: ConstraintsNamespace.titleViewFromContentViewBottom
+                constant: Constraints.titleViewFromContentViewBottom
             )
         ])
     }
