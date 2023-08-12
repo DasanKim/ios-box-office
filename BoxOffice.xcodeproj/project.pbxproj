@@ -102,9 +102,9 @@
 				ACDAD3E32A876300000604B2 /* DTO */,
 				3CF5610A2A73D30F0048D14D /* URLConfigurable.swift */,
 				3CF5610C2A73D3540048D14D /* KobisAPI.swift */,
+				3C79AB7A2A879ECD0038B41B /* KakaoAPI.swift */,
 				3CF561372A78D79F0048D14D /* Bundle+.swift */,
 				ACF5C62D2A811956005CB910 /* BoxOfficeManager.swift */,
-				3C79AB7A2A879ECD0038B41B /* KakaoAPI.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

@@ -36,9 +36,9 @@ extension BoxOfficeViewController {
     }
     
     private func loadData() {
-        let boxOfficeManager = BoxOfficeManager(targetDate: yesterday)
+        let boxOfficeManager = BoxOfficeManager()
         
-        boxOfficeManager.fetchBoxOfficeData { result in
+        boxOfficeManager.fetchBoxOfficeData(targetDate: yesterday) { result in
             switch result {
             case .success(let items):
                 guard let items = items else { return }
