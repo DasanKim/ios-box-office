@@ -12,6 +12,7 @@
 		3CB38E9A2A7FEB6C0070E63C /* TargetDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB38E992A7FEB6C0070E63C /* TargetDate.swift */; };
 		3CB38E9C2A7FF7690070E63C /* CountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB38E9B2A7FF7690070E63C /* CountFormatter.swift */; };
 		3CB38E9F2A8141CA0070E63C /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB38E9E2A8141CA0070E63C /* Constraints.swift */; };
+		3CB38EA12A8766840070E63C /* MovieImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB38EA02A8766840070E63C /* MovieImage.swift */; };
 		3CF5610B2A73D30F0048D14D /* URLConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5610A2A73D30F0048D14D /* URLConfigurable.swift */; };
 		3CF5610D2A73D3540048D14D /* KobisOpenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5610C2A73D3540048D14D /* KobisOpenAPI.swift */; };
 		3CF5610F2A73E7830048D14D /* URL+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF5610E2A73E7830048D14D /* URL+.swift */; };
@@ -49,6 +50,7 @@
 		3CB38E992A7FEB6C0070E63C /* TargetDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetDate.swift; sourceTree = "<group>"; };
 		3CB38E9B2A7FF7690070E63C /* CountFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountFormatter.swift; sourceTree = "<group>"; };
 		3CB38E9E2A8141CA0070E63C /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
+		3CB38EA02A8766840070E63C /* MovieImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieImage.swift; sourceTree = "<group>"; };
 		3CF5610A2A73D30F0048D14D /* URLConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConfigurable.swift; sourceTree = "<group>"; };
 		3CF5610C2A73D3540048D14D /* KobisOpenAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KobisOpenAPI.swift; sourceTree = "<group>"; };
 		3CF5610E2A73E7830048D14D /* URL+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+.swift"; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 			children = (
 				AC02E17B2A6F703D00C6A91B /* BoxOffice.swift */,
 				AC11E7DE2A729341008A84B0 /* Movie.swift */,
+				3CB38EA02A8766840070E63C /* MovieImage.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 			files = (
 				63DF20F32970E1A0005DF7D1 /* BoxOfficeViewController.swift in Sources */,
 				3CF5610D2A73D3540048D14D /* KobisOpenAPI.swift in Sources */,
+				3CB38EA12A8766840070E63C /* MovieImage.swift in Sources */,
 				AC11E7DF2A729341008A84B0 /* Movie.swift in Sources */,
 				63DF20EF2970E1A0005DF7D1 /* AppDelegate.swift in Sources */,
 				63DF20F12970E1A0005DF7D1 /* SceneDelegate.swift in Sources */,
