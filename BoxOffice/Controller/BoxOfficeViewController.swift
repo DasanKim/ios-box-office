@@ -3,7 +3,7 @@
 //  BoxOffice
 //
 //  Created by kjs on 13/01/23.
-//
+//  Last modified by Dasan & Whales.
 
 import UIKit
 import OSLog
@@ -27,6 +27,8 @@ final class BoxOfficeViewController: UIViewController {
         configureDataSource()
         configureActivityIndicatorView()
         configureNavigationItem(title: yesterday.formattedWithHyphen())
+        
+        collectionView.delegate = self
     }
 }
 
@@ -157,5 +159,14 @@ extension BoxOfficeViewController {
             self.configureNavigationItem(title: self.yesterday.formattedWithHyphen())
             self.collectionView.refreshControl?.endRefreshing()
         }
+    }
+}
+
+extension BoxOfficeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let movieCode: String = items[indexPath.item].movieCode
+        let movieInformationViewController = MovieInformationViewController(movieCode: movieCode)
+        
+        navigationController?.show(movieInformationViewController, sender: self)
     }
 }
