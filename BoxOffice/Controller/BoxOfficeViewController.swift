@@ -166,6 +166,6 @@ extension BoxOfficeViewController: UICollectionViewDelegate {
         let movieCode: String = items[indexPath.item].movieCode
         let movieInformationViewController = MovieInformationViewController(movieCode: movieCode)
         
-        navigationController?.show(movieInformationViewController, sender: self)
+        show(movieInformationViewController, sender: self)
     }
 }
