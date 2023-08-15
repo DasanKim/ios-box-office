@@ -10,6 +10,7 @@ import UIKit
 final class MovieScrollView: UIScrollView {
     private var movieInformation: MovieInformation?
     private var image: UIImage?
+    private var movieInformationStackView: MovieInformationStackView?
     
     private let movieStackView: UIStackView = {
         let stackView = UIStackView()
@@ -36,6 +37,7 @@ final class MovieScrollView: UIScrollView {
         self.movieInformation = movieInformation
         
         configureUI()
+        setUpConstraints()
     }
     
     override init(frame: CGRect) {
@@ -46,29 +48,32 @@ final class MovieScrollView: UIScrollView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func configureMovieImageView() {
-        movieImageView.image = image
-    }
-    
-    private func configureMovieInformationStackView() -> MovieInformationStackView {
-        var movieInformationStackView = MovieInformationStackView()
-        
-        if let movieInformation = movieInformation {
-            movieInformationStackView = MovieInformationStackView(frame: .zero, movieInformation: movieInformation)
-        }
-        
-        return movieInformationStackView
-    }
-    
     private func configureUI() {
+        configureMovieInformationStackView()
         configureMovieImageView()
-        let movieInformationStackView = configureMovieInformationStackView()
+        
+        guard let movieInformationStackView = movieInformationStackView else { return }
         
         self.addSubview(movieStackView)
         movieStackView.addArrangedSubview(movieImageView)
         movieStackView.addArrangedSubview(movieInformationStackView)
+    }
+    
+    private func configureMovieInformationStackView() {
+        if let movieInformation = movieInformation {
+            movieInformationStackView = MovieInformationStackView(frame: .zero, movieInformation: movieInformation)
+        }
+    }
+    
+    private func configureMovieImageView() {
+        movieImageView.image = image
+    }
+    
+    private func setUpConstraints() {
+        guard let movieInformationStackView = movieInformationStackView else { return }
         
         self.translatesAutoresizingMaskIntoConstraints = false
+        let imageRatio = calculateImageRatio()
         
         NSLayoutConstraint.activate([
             movieStackView.topAnchor.constraint(equalTo: self.topAnchor),
@@ -78,9 +83,15 @@ final class MovieScrollView: UIScrollView {
             movieStackView.widthAnchor.constraint(equalTo: self.widthAnchor),
             
             movieImageView.widthAnchor.constraint(equalTo: movieStackView.widthAnchor),
-            movieImageView.heightAnchor.constraint(lessThanOrEqualTo: self.frameLayoutGuide.heightAnchor, multiplier: 0.6),
+            movieImageView.heightAnchor.constraint(equalTo: movieImageView.widthAnchor, multiplier: imageRatio),
             
             movieInformationStackView.widthAnchor.constraint(equalTo: movieStackView.widthAnchor)
         ])
+    }
+    
+    private func calculateImageRatio() -> Double {
+        guard let image = image else { return 0 }
+        
+        return Double(image.size.height) / Double(image.size.width)
     }
 }
