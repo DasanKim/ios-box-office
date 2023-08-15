@@ -33,7 +33,7 @@ final class MovieDetailStackView: UIStackView {
     init(frame: CGRect, title: String, content: String) {
         super.init(frame: frame)
         self.title = title
-        self.content = content
+        self.content = content.isEmpty ? "-" : content
         
         configureUI()
         setUpConstraints()
