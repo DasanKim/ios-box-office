@@ -47,10 +47,12 @@ final class MovieScrollView: UIScrollView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+}
+
+extension MovieScrollView {
     private func configureUI() {
-        configureMovieInformationStackView()
         configureMovieImageView()
+        configureMovieInformationStackView()
         
         guard let movieInformationStackView = movieInformationStackView else { return }
         
@@ -59,14 +61,14 @@ final class MovieScrollView: UIScrollView {
         movieStackView.addArrangedSubview(movieInformationStackView)
     }
     
+    private func configureMovieImageView() {
+        movieImageView.image = image
+    }
+    
     private func configureMovieInformationStackView() {
         if let movieInformation = movieInformation {
             movieInformationStackView = MovieInformationStackView(frame: .zero, movieInformation: movieInformation)
         }
-    }
-    
-    private func configureMovieImageView() {
-        movieImageView.image = image
     }
     
     private func setUpConstraints() {

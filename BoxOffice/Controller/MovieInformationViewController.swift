@@ -30,6 +30,7 @@ final class MovieInformationViewController: UIViewController {
         view.backgroundColor = .systemBackground
         
         configureActivityIndicatorView()
+        startActivityIndicator()
         loadData()
     }
     
@@ -59,6 +60,7 @@ final class MovieInformationViewController: UIViewController {
             case .success(let image):
                 DispatchQueue.main.async {
                     self.posterImage = image
+                    self.stopActivityIndicator()
                     self.configureUI()
                 }
             case .failure(let error):
@@ -66,24 +68,11 @@ final class MovieInformationViewController: UIViewController {
             }
         }
     }
-        
+}
+
+extension MovieInformationViewController {
     private func configureNavigationItem(title: String?) {
         navigationItem.title = title
-    }
-    
-    private func configureActivityIndicatorView() {
-        view.addSubview(activityIndicatorView)
-        
-        activityIndicatorView.center = view.center
-        activityIndicatorView.style = .large
-        
-        startActivityIndicator()
-    }
-    
-    private func startActivityIndicator() {
-        DispatchQueue.main.async {
-            self.activityIndicatorView.startAnimating()
-        }
     }
     
     private func configureUI() {
@@ -101,5 +90,26 @@ final class MovieInformationViewController: UIViewController {
             movieScrollView.rightAnchor.constraint(equalTo: view.rightAnchor),
             movieScrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+}
+
+extension MovieInformationViewController {
+    private func configureActivityIndicatorView() {
+        view.addSubview(activityIndicatorView)
+        
+        activityIndicatorView.center = view.center
+        activityIndicatorView.style = .large
+    }
+    
+    private func startActivityIndicator() {
+        DispatchQueue.main.async {
+            self.activityIndicatorView.startAnimating()
+        }
+    }
+    
+    private func stopActivityIndicator() {
+        DispatchQueue.main.async {
+            self.activityIndicatorView.stopAnimating()
+        }
     }
 }

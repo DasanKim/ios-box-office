@@ -10,20 +10,6 @@ import UIKit
 final class BoxOfficeCell: UICollectionViewListCell {
     static let Identifier = "boxOfficeCell"
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        configureUI()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        rankIntensityLabel.textColor = .black
-    }
-    
     private let rankLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .largeTitle)
@@ -87,17 +73,18 @@ final class BoxOfficeCell: UICollectionViewListCell {
         return stackView
     }()
     
-    private func configureUI() {
-        rankStackView.addArrangedSubview(rankLabel)
-        rankStackView.addArrangedSubview(rankIntensityLabel)
-        titleStackView.addArrangedSubview(movieNameLabel)
-        titleStackView.addArrangedSubview(audienceLabel)
-        stackView.addArrangedSubview(rankStackView)
-        stackView.addArrangedSubview(titleStackView)
-        
-        contentView.addSubview(stackView)
-        self.accessories = [.disclosureIndicator()]
-        setUpStackViewConstraints()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        configureUI()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        rankIntensityLabel.textColor = .black
     }
     
     func updateLabel(with boxOfficeData: BoxOfficeData, _ rankIntensityText: NSMutableAttributedString) {
@@ -115,6 +102,19 @@ final class BoxOfficeCell: UICollectionViewListCell {
 }
 
 extension BoxOfficeCell {
+    private func configureUI() {
+        rankStackView.addArrangedSubview(rankLabel)
+        rankStackView.addArrangedSubview(rankIntensityLabel)
+        titleStackView.addArrangedSubview(movieNameLabel)
+        titleStackView.addArrangedSubview(audienceLabel)
+        stackView.addArrangedSubview(rankStackView)
+        stackView.addArrangedSubview(titleStackView)
+        
+        contentView.addSubview(stackView)
+        self.accessories = [.disclosureIndicator()]
+        setUpStackViewConstraints()
+    }
+    
     private func setUpStackViewConstraints() {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         

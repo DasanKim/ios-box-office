@@ -46,12 +46,9 @@ final class MovieDetailStackView: UIStackView {
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    private func configureLabels() {
-        itemTitleLabel.text = title
-        itemDescriptionLabel.text = content
-    }
-    
+}
+
+extension MovieDetailStackView {
     private func configureUI() {
         self.axis = .horizontal
         self.alignment = .fill
@@ -63,6 +60,11 @@ final class MovieDetailStackView: UIStackView {
         
         self.addArrangedSubview(itemTitleLabel)
         self.addArrangedSubview(itemDescriptionLabel)
+    }
+    
+    private func configureLabels() {
+        itemTitleLabel.text = title
+        itemDescriptionLabel.text = content
     }
     
     private func setUpConstraints() {

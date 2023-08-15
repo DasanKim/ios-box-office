@@ -32,7 +32,9 @@ final class MovieInformationStackView: UIStackView {
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+}
+
+extension MovieInformationStackView {
     private func configureUI() {
         self.axis = .vertical
         self.alignment = .center

@@ -22,19 +22,14 @@ final class BoxOfficeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadData()
         configureHierarchy()
-        configureDataSource()
         configureActivityIndicatorView()
+        startActivityIndicator()
+        loadData()
+        configureDataSource()
         configureNavigationItem(title: yesterday.formattedWithHyphen())
         
         collectionView.delegate = self
-    }
-}
-
-extension BoxOfficeViewController {
-    private func configureNavigationItem(title: String) {
-        navigationItem.title = title
     }
     
     private func loadData() {
@@ -52,11 +47,17 @@ extension BoxOfficeViewController {
             }
         }
     }
-    
-    private func createLayout() -> UICollectionViewLayout {
-        let configuration = UICollectionLayoutListConfiguration(appearance: .plain)
+}
+
+extension BoxOfficeViewController {
+    private func applySnapshot() {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, BoxOfficeData>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(items)
         
-        return UICollectionViewCompositionalLayout.list(using: configuration)
+        DispatchQueue.main.async {
+            self.dataSource.apply(snapshot, animatingDifferences: true)
+        }
     }
     
     private func configureHierarchy() {
@@ -65,6 +66,12 @@ extension BoxOfficeViewController {
         
         view.addSubview(collectionView)
         configureRefreshControl()
+    }
+    
+    private func createLayout() -> UICollectionViewLayout {
+        let configuration = UICollectionLayoutListConfiguration(appearance: .plain)
+        
+        return UICollectionViewCompositionalLayout.list(using: configuration)
     }
     
     private func configureDataSource() {
@@ -79,16 +86,6 @@ extension BoxOfficeViewController {
         }
         
         applySnapshot()
-    }
-    
-    private func applySnapshot() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, BoxOfficeData>()
-        snapshot.appendSections([.main])
-        snapshot.appendItems(items)
-        
-        DispatchQueue.main.async {
-            self.dataSource.apply(snapshot, animatingDifferences: true)
-        }
     }
     
     private func configureRankIntensity(with boxOfficeData: BoxOfficeData) -> NSMutableAttributedString {
@@ -124,6 +121,10 @@ extension BoxOfficeViewController {
             return attributedString
         }
     }
+    
+    private func configureNavigationItem(title: String) {
+        navigationItem.title = title
+    }
 }
 
 extension BoxOfficeViewController {
@@ -132,8 +133,6 @@ extension BoxOfficeViewController {
         
         activityIndicatorView.center = view.center
         activityIndicatorView.style = .large
-        
-        startActivityIndicator()
     }
     
     private func startActivityIndicator() {
