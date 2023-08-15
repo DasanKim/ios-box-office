@@ -53,7 +53,7 @@ final class MovieInformationStackView: UIStackView {
     private func configureLabels() {
         guard let directorsName = movieInformation?.directors.map({ $0.personName }).joined(separator: ", "),
               let productionYear = movieInformation?.productionYear,
-              let openingDate = movieInformation?.openingDate,
+              var openingDate = movieInformation?.openingDate,
               let showTime = movieInformation?.showTime,
               let watchGradesName = movieInformation?.audits.map({ $0.watchGradeName }).joined(separator: ", "),
               let nationsName = movieInformation?.nations.map({ $0.nationName }).joined(separator: ", "),
@@ -62,7 +62,7 @@ final class MovieInformationStackView: UIStackView {
         
         directorStackView = MovieDetailStackView(frame: .zero, title: "감독", content: directorsName)
         productionYearStackView = MovieDetailStackView(frame: .zero, title: "제작년도", content: productionYear)
-        openingDateStackView = MovieDetailStackView(frame: .zero, title: "개봉일", content: openingDate)
+        openingDateStackView = MovieDetailStackView(frame: .zero, title: "개봉일", content: openingDate.formattedDateWithHyphen())
         showTimeStackView = MovieDetailStackView(frame: .zero, title: "상영시간", content: showTime)
         watchGradeStackView = MovieDetailStackView(frame: .zero, title: "관람등급", content: watchGradesName)
         nationStackView = MovieDetailStackView(frame: .zero, title: "제작국가", content: nationsName)
