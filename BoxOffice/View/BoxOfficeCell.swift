@@ -12,7 +12,7 @@ final class BoxOfficeCell: UICollectionViewListCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configureCell()
+        configureUI()
     }
     
     required init?(coder: NSCoder) {
@@ -87,7 +87,7 @@ final class BoxOfficeCell: UICollectionViewListCell {
         return stackView
     }()
     
-    private func configureCell() {
+    private func configureUI() {
         rankStackView.addArrangedSubview(rankLabel)
         rankStackView.addArrangedSubview(rankIntensityLabel)
         titleStackView.addArrangedSubview(movieNameLabel)

@@ -13,12 +13,12 @@ private enum Section: Hashable {
 }
 
 final class BoxOfficeViewController: UIViewController {
-    private var dataSource: UICollectionViewDiffableDataSource<Section, BoxOfficeData>! = nil
-    private var collectionView: UICollectionView! = nil
-    private let activityIndicatorView = UIActivityIndicatorView()
     private let yesterday = TargetDate(dayFromNow: -1)
     private var items = [BoxOfficeData]()
-
+    private var collectionView: UICollectionView! = nil
+    private var dataSource: UICollectionViewDiffableDataSource<Section, BoxOfficeData>! = nil
+    private let activityIndicatorView = UIActivityIndicatorView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
