@@ -11,7 +11,7 @@ import OSLog
 final class MovieInformationViewController: UIViewController {
     private let boxOfficeManager = BoxOfficeManager()
     private var movieInformation: MovieInformation?
-    private var movieCode = String()
+    private var movieCode: String?
     private var posterImage: UIImage?
     
     init(movieCode: String) {
@@ -32,6 +32,8 @@ final class MovieInformationViewController: UIViewController {
     }
     
     private func loadData() {
+        guard let movieCode = movieCode else { return }
+        
         boxOfficeManager.fetchMovieData(movieCode: movieCode){ result in
             switch result {
             case .success(let movieInformation):
@@ -57,20 +59,20 @@ final class MovieInformationViewController: UIViewController {
                     self.posterImage = image
                     self.configureUI()
                 }
-                self.posterImage = image
             case .failure(let error):
                 os_log("%{public}@", type: .default, error.localizedDescription)
             }
         }
     }
-    
+        
     private func configureNavigationItem(title: String?) {
         navigationItem.title = title
     }
     
     private func configureUI() {
-        guard let posterImage = posterImage else { return }
-        let movieScrollView = MovieScrollView(frame: view.frame, image: posterImage)
+        guard let posterImage = posterImage,
+              let movieInformation = movieInformation else { return }
+        let movieScrollView = MovieScrollView(frame: .zero, image: posterImage, movieInformation: movieInformation)
         
         view.addSubview(movieScrollView)
         
