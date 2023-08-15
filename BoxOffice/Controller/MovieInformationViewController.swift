@@ -13,6 +13,7 @@ final class MovieInformationViewController: UIViewController {
     private var movieInformation: MovieInformation?
     private var movieCode: String?
     private var posterImage: UIImage?
+    private let activityIndicatorView = UIActivityIndicatorView()
     
     init(movieCode: String) {
         super.init(nibName: nil, bundle: nil)
@@ -28,6 +29,7 @@ final class MovieInformationViewController: UIViewController {
         
         view.backgroundColor = .systemBackground
         
+        configureActivityIndicatorView()
         loadData()
     }
     
@@ -69,12 +71,28 @@ final class MovieInformationViewController: UIViewController {
         navigationItem.title = title
     }
     
+    private func configureActivityIndicatorView() {
+        view.addSubview(activityIndicatorView)
+        
+        activityIndicatorView.center = view.center
+        activityIndicatorView.style = .large
+        
+        startActivityIndicator()
+    }
+    
+    private func startActivityIndicator() {
+        DispatchQueue.main.async {
+            self.activityIndicatorView.startAnimating()
+        }
+    }
+    
     private func configureUI() {
         guard let posterImage = posterImage,
               let movieInformation = movieInformation else { return }
         
         let movieScrollView = MovieScrollView(frame: .zero, image: posterImage, movieInformation: movieInformation)
         
+        activityIndicatorView.removeFromSuperview()
         view.addSubview(movieScrollView)
         
         NSLayoutConstraint.activate([
