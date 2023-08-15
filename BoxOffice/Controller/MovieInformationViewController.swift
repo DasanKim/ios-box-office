@@ -72,15 +72,16 @@ final class MovieInformationViewController: UIViewController {
     private func configureUI() {
         guard let posterImage = posterImage,
               let movieInformation = movieInformation else { return }
+        
         let movieScrollView = MovieScrollView(frame: .zero, image: posterImage, movieInformation: movieInformation)
         
         view.addSubview(movieScrollView)
         
         NSLayoutConstraint.activate([
             movieScrollView.topAnchor.constraint(equalTo: view.topAnchor),
-            movieScrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            movieScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            movieScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            movieScrollView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            movieScrollView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            movieScrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 }

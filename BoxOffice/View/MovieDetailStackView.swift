@@ -36,6 +36,7 @@ final class MovieDetailStackView: UIStackView {
         self.content = content
         
         configureUI()
+        setUpConstraints()
     }
     
     override init(frame: CGRect) {
@@ -55,16 +56,21 @@ final class MovieDetailStackView: UIStackView {
         self.axis = .horizontal
         self.alignment = .fill
         self.distribution = .fill
-        self.spacing = 8
+        self.spacing = .zero
         self.translatesAutoresizingMaskIntoConstraints = false
         
         configureLabels()
         
         self.addArrangedSubview(itemTitleLabel)
         self.addArrangedSubview(itemDescriptionLabel)
-        
+    }
+    
+    private func setUpConstraints() {
         NSLayoutConstraint.activate([
-            itemTitleLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.15)
+            itemTitleLabel.widthAnchor.constraint(
+                equalTo: self.widthAnchor,
+                multiplier: Constraints.itemTitleLabelFromMovieDetailStackViewWidth
+            )
         ])
     }
 }

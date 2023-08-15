@@ -82,8 +82,14 @@ final class MovieScrollView: UIScrollView {
             movieStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             movieStackView.widthAnchor.constraint(equalTo: self.widthAnchor),
             
-            movieImageView.widthAnchor.constraint(equalTo: movieStackView.widthAnchor),
-            movieImageView.heightAnchor.constraint(equalTo: movieImageView.widthAnchor, multiplier: imageRatio),
+            movieImageView.widthAnchor.constraint(
+                equalTo: movieStackView.widthAnchor,
+                constant: Constraints.movieImageViewFromMovieStackViewWidth
+            ),
+            movieImageView.heightAnchor.constraint(
+                equalTo: movieImageView.widthAnchor,
+                multiplier: imageRatio
+            ),
             
             movieInformationStackView.widthAnchor.constraint(equalTo: movieStackView.widthAnchor)
         ])
