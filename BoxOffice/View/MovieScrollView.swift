@@ -91,7 +91,10 @@ final class MovieScrollView: UIScrollView {
                 multiplier: imageRatio
             ),
             
-            movieInformationStackView.widthAnchor.constraint(equalTo: movieStackView.widthAnchor)
+            movieInformationStackView.widthAnchor.constraint(
+                equalTo: movieStackView.widthAnchor,
+                constant: Constraints.movieInformationStackViewFromMovieStackViewWidth
+            )
         ])
     }
     
