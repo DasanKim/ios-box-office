@@ -9,6 +9,7 @@ import UIKit
 
 final class MovieInformationStackView: UIStackView {
     private var movieInformation: MovieInformation?
+    
     private var directorStackView: MovieDetailStackView?
     private var productionYearStackView: MovieDetailStackView?
     private var openingDateStackView: MovieDetailStackView?

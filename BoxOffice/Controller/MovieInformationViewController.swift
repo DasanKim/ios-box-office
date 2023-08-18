@@ -12,6 +12,7 @@ final class MovieInformationViewController: UIViewController {
     private let boxOfficeManager = BoxOfficeManager()
     private var movieInformation: MovieInformation?
     private var movieCode: String?
+    
     private var posterImage: UIImage?
     private let activityIndicatorView = UIActivityIndicatorView()
     
@@ -37,7 +38,7 @@ final class MovieInformationViewController: UIViewController {
     private func loadData() {
         guard let movieCode = movieCode else { return }
         
-        boxOfficeManager.fetchMovieData(movieCode: movieCode){ result in
+        boxOfficeManager.fetchMovieData(movieCode: movieCode) { result in
             switch result {
             case .success(let movieInformation):
                 DispatchQueue.main.async {
