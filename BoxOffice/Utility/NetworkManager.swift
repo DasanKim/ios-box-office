@@ -54,15 +54,13 @@ struct NetworkManager {
                 return
             }
             
-            DispatchQueue.main.async {
-                guard let data = data else {
-                    completionHandler((nil, NetworkError.noData))
-                    
-                    return
-                }
+            guard let data = data else {
+                completionHandler((nil, NetworkError.noData))
                 
-                completionHandler((data, nil))
+                return
             }
+            
+            completionHandler((data, nil))
         }
         
         task.resume()
@@ -85,15 +83,13 @@ struct NetworkManager {
                 return
             }
             
-            DispatchQueue.main.async {
-                guard let data = data, let image = UIImage(data: data) else {
-                    completionHandler((nil, NetworkError.noData))
-                    
-                    return
-                }
+            guard let data = data, let image = UIImage(data: data) else {
+                completionHandler((nil, NetworkError.noData))
                 
-                completionHandler((image, nil))
+                return
             }
+            
+            completionHandler((image, nil))
         }
         
         task.resume()
