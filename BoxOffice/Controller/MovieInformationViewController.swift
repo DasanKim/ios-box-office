@@ -98,8 +98,13 @@ extension MovieInformationViewController {
     private func configureActivityIndicatorView() {
         view.addSubview(activityIndicatorView)
         
-        activityIndicatorView.center = view.center
         activityIndicatorView.style = .large
+        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            activityIndicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+        ])
     }
     
     private func startActivityIndicator() {
