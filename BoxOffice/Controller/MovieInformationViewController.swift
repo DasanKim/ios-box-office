@@ -13,7 +13,6 @@ final class MovieInformationViewController: UIViewController {
     private var movieInformation: MovieInformation?
     private var movieCode: String?
     
-    private var posterImage: UIImage?
     private let activityIndicatorView = UIActivityIndicatorView()
     
     init(movieCode: String) {
@@ -60,9 +59,8 @@ final class MovieInformationViewController: UIViewController {
             switch result {
             case .success(let image):
                 DispatchQueue.main.async {
-                    self.posterImage = image
                     self.stopActivityIndicator()
-                    self.configureUI()
+                    self.configureUI(with: image)
                 }
             case .failure(let error):
                 os_log("%{public}@", type: .default, error.localizedDescription)
@@ -76,8 +74,8 @@ extension MovieInformationViewController {
         navigationItem.title = title
     }
     
-    private func configureUI() {
-        guard let posterImage = posterImage,
+    private func configureUI(with image: UIImage?) {
+        guard let posterImage = image,
               let movieInformation = movieInformation else { return }
         
         let movieScrollView = MovieScrollView(frame: .zero, image: posterImage, movieInformation: movieInformation)
