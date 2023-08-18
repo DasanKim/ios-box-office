@@ -5,7 +5,7 @@
 //  Created by Dasan & Whales on 2023/08/12.
 //
 
-enum RankOldOrNew {
-    static let old: String = "OLD"
-    static let new: String = "NEW"
+enum RankOldOrNew: String, Decodable {
+    case old = "OLD"
+    case new = "NEW"
 }

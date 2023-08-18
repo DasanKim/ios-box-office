@@ -97,7 +97,7 @@ extension BoxOfficeViewController {
             return NSMutableAttributedString(string: "")
         }
         
-        if rankOldOrNew == RankOldOrNew.old {
+        if rankOldOrNew.rawValue == RankOldOrNew.old.rawValue {
             if rankIntensity < 0 {
                 text = "▼\(-rankIntensity)"
                 attributedString = NSMutableAttributedString(string: text)
