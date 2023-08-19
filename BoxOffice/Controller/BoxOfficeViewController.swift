@@ -222,9 +222,13 @@ extension BoxOfficeViewController {
         } else {
             collectionViewStyle = .list
         }
+        
+        collectionView.removeFromSuperview()
 
         configureHierarchy(style: collectionViewStyle)
         configureDataSource(style: collectionViewStyle)
+
+        collectionView.delegate = self
     }
 }
 
@@ -242,11 +246,12 @@ extension BoxOfficeViewController {
     }
     
     private func startActivityIndicator() {
-        self.activityIndicatorView.startAnimating()
+        activityIndicatorView.startAnimating()
     }
     
     private func stopActivityIndicator() {
-        self.activityIndicatorView.stopAnimating()
+        activityIndicatorView.stopAnimating()
+        activityIndicatorView.removeFromSuperview()
     }
     
     private func configureRefreshControl() {
