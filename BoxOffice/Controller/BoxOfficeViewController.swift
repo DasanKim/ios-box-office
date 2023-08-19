@@ -39,10 +39,12 @@ final class BoxOfficeViewController: UIViewController {
         boxOfficeManager.fetchBoxOfficeData(with: yesterday) { result in
             switch result {
             case .success(let items):
-                guard let items = items else { return }
-                self.items = items
-                self.applySnapshot()
-                self.stopActivityIndicator()
+                DispatchQueue.main.async {
+                    guard let items = items else { return }
+                    self.items = items
+                    self.applySnapshot()
+                    self.stopActivityIndicator()
+                }
             case .failure(let error):
                 os_log("%{public}@", type: .default, error.localizedDescription)
             }
@@ -142,15 +144,11 @@ extension BoxOfficeViewController {
     }
     
     private func startActivityIndicator() {
-        DispatchQueue.main.async {
-            self.activityIndicatorView.startAnimating()
-        }
+        self.activityIndicatorView.startAnimating()
     }
     
     private func stopActivityIndicator() {
-        DispatchQueue.main.async {
-            self.activityIndicatorView.stopAnimating()
-        }
+        self.activityIndicatorView.stopAnimating()
     }
     
     private func configureRefreshControl() {

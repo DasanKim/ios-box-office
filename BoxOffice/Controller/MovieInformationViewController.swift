@@ -106,14 +106,10 @@ extension MovieInformationViewController {
     }
     
     private func startActivityIndicator() {
-        DispatchQueue.main.async {
-            self.activityIndicatorView.startAnimating()
-        }
+        self.activityIndicatorView.startAnimating()
     }
     
     private func stopActivityIndicator() {
-        DispatchQueue.main.async {
-            self.activityIndicatorView.stopAnimating()
-        }
+        self.activityIndicatorView.stopAnimating()
     }
 }
