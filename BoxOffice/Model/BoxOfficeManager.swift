@@ -8,84 +8,60 @@
 import UIKit
 
 final class BoxOfficeManager {
-    func fetchBoxOfficeData(targetDate: TargetDate, completionHandler: @escaping (Result<[BoxOfficeData]?, Error>) -> Void) {
+    func fetchBoxOfficeData(with targetDate: TargetDate, completion: @escaping (Result<[BoxOfficeData]?, Error>) -> Void) {
         let networkManager = NetworkManager()
         
-        networkManager.fetchData(url: KobisAPI.boxOffice(targetDate: targetDate.formattedWithoutSeparator()).url) { (data, error) in
+        networkManager.fetchData(url: KobisAPI.boxOffice(targetDate: targetDate.formattedWithoutSeparator()).url) { result in
             do {
-                if let error = error {
-                    completionHandler(.failure(error))
-                    
-                    return
-                }
+                guard let data = try result.get() else { return }
+                let decodedData = try DecodingManager.decodeJSON(type: BoxOffice.self, data: data)
+                let boxOfficeItems = decodedData.boxOfficeResult.dailyBoxOfficeList
                 
-                if let data = data {
-                    let decodedData = try DecodingManager.decodeJSON(type: BoxOffice.self, data: data)
-                    let boxOfficeItems = decodedData.boxOfficeResult.dailyBoxOfficeList
-                    completionHandler(.success(boxOfficeItems))
-                }
+                completion(.success(boxOfficeItems))
             } catch {
-                completionHandler(.failure(error))
+                completion(.failure(error))
             }
         }
     }
     
-    func fetchMovieData(movieCode: String, completionHandler: @escaping (Result<MovieInformation?, Error>) -> Void) {
+    func fetchMovieData(with movieCode: String, completion: @escaping (Result<MovieInformation?, Error>) -> Void) {
         let networkManager = NetworkManager()
         
-        networkManager.fetchData(url: KobisAPI.movie(movieCode: movieCode).url) { (data, error) in
+        networkManager.fetchData(url: KobisAPI.movie(movieCode: movieCode).url) { result in
             do {
-                if let error = error {
-                    completionHandler(.failure(error))
-                    
-                    return
-                }
+                guard let data = try result.get() else { return }
+                let decodedData = try DecodingManager.decodeJSON(type: Movie.self, data: data)
+                let movieInformation = decodedData.movieInformationResult.movieInformation
                 
-                if let data = data {
-                    let decodedData = try DecodingManager.decodeJSON(type: Movie.self, data: data)
-                    let movieInformation = decodedData.movieInformationResult.movieInformation
-                    print(movieInformation)
-                    completionHandler(.success(movieInformation))
-                }
+                completion(.success(movieInformation))
             } catch {
-                completionHandler(.failure(error))
+                completion(.failure(error))
             }
         }
     }
     
-    func fetchMovieImageData(keyword: String, completionHandler: @escaping (Result<UIImage?, Error>) -> Void) {
+    func fetchMovieImageData(with keyword: String, completion: @escaping (Result<UIImage?, Error>) -> Void) {
         let networkManager = NetworkManager()
         var movieImageURLString: String?
         
-        networkManager.fetchData(urlRequest: KakaoAPI.image(keyword: keyword).urlRequest) { (data, error) in
+        networkManager.fetchData(urlRequest: KakaoAPI.image(keyword: keyword).urlRequest) { result in
             do {
-                if let error = error {
-                    completionHandler(.failure(error))
-                    return
-                }
+                guard let data = try result.get() else { return }
+                let decodedData = try DecodingManager.decodeJSON(type: MovieImage.self, data: data)
+                let movieImageItems = decodedData.documents
                 
-                if let data = data {
-                    let decodedData = try DecodingManager.decodeJSON(type: MovieImage.self, data: data)
-                    let movieImageItems = decodedData.documents
-                    
-                    movieImageURLString = movieImageItems.first?.imageURL
-                }
+                movieImageURLString = movieImageItems.first?.imageURL
                 
                 guard let movieImageURLString = movieImageURLString,
                       let movieImageURL = URL(string: movieImageURLString) else { return }
                 
-                networkManager.fetchImage(url: movieImageURL) { (image, error) in
-                    if let error = error {
-                        completionHandler(.failure(error))
-                        return
-                    }
+                networkManager.fetchImage(url: movieImageURL) { result in
+                    guard let image = try? result.get() else { return }
                     
-                    if let image = image {
-                        completionHandler(.success(image))
-                    }
+                    completion(.success(image))
                 }
             } catch {
-                completionHandler(.failure(error))
+                completion(.failure(error))
             }
         }
     }

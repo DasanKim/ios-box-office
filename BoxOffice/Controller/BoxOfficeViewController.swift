@@ -36,7 +36,7 @@ final class BoxOfficeViewController: UIViewController {
     private func loadData() {
         let boxOfficeManager = BoxOfficeManager()
         
-        boxOfficeManager.fetchBoxOfficeData(targetDate: yesterday) { result in
+        boxOfficeManager.fetchBoxOfficeData(with: yesterday) { result in
             switch result {
             case .success(let items):
                 guard let items = items else { return }

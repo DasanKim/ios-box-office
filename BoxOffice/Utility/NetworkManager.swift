@@ -8,90 +8,74 @@
 import UIKit
 
 struct NetworkManager {
-    func fetchData(url: URL?, completionHandler: @escaping ((Data?, NetworkError?)) -> Void) {
+    func fetchData(url: URL?, completion: @escaping (Result<Data?, NetworkError>) -> Void) {
         guard let url = url else { return }
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if error != nil {
-                completionHandler((nil, NetworkError.requestFailed))
+                completion(.failure(NetworkError.requestFailed))
 
                 return
             }
             
             guard let httpResponse = response as? HTTPURLResponse,
                   (200...299).contains(httpResponse.statusCode) else {
-                completionHandler((nil, NetworkError.invalidResponse))
+                completion(.failure(NetworkError.invalidResponse))
                 
                 return
             }
             
             guard let data = data else {
-                completionHandler((nil, NetworkError.noData))
+                completion(.failure(NetworkError.noData))
                 
                 return
             }
             
-            completionHandler((data, nil))
+            completion(.success(data))
         }
         
         task.resume()
     }
     
-    func fetchData(urlRequest: URLRequest?, completionHandler: @escaping ((Data?, NetworkError?)) -> Void) {
+    func fetchData(urlRequest: URLRequest?, completion: @escaping (Result<Data?, NetworkError>) -> Void) {
         guard let urlRequest = urlRequest else { return }
         
         let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             if error != nil {
-                completionHandler((nil, NetworkError.requestFailed))
+                completion(.failure(NetworkError.requestFailed))
 
                 return
             }
             
             guard let httpResponse = response as? HTTPURLResponse,
                   (200...299).contains(httpResponse.statusCode) else {
-                completionHandler((nil, NetworkError.invalidResponse))
+                completion(.failure(NetworkError.invalidResponse))
                 
                 return
             }
             
             guard let data = data else {
-                completionHandler((nil, NetworkError.noData))
+                completion(.failure(NetworkError.noData))
                 
                 return
             }
             
-            completionHandler((data, nil))
+            completion(.success(data))
         }
         
         task.resume()
     }
     
-    func fetchImage(url: URL?, completionHandler: @escaping ((UIImage?, NetworkError?)) -> Void) {
-        guard let url = url else { return }
-        
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            if error != nil {
-                completionHandler((nil, NetworkError.requestFailed))
-
-                return
+    func fetchImage(url: URL?, completion: @escaping (Result<UIImage?, NetworkError>) -> Void) {
+        fetchData(url: url) { result in
+            switch result {
+            case .success(let data):
+                guard let data = data,
+                      let image = UIImage(data: data) else { return }
+                completion(.success(image))
+            case .failure(let error):
+                completion(.failure(error))
             }
-            
-            guard let httpResponse = response as? HTTPURLResponse,
-                  (200...299).contains(httpResponse.statusCode) else {
-                completionHandler((nil, NetworkError.invalidResponse))
-                
-                return
-            }
-            
-            guard let data = data, let image = UIImage(data: data) else {
-                completionHandler((nil, NetworkError.noData))
-                
-                return
-            }
-            
-            completionHandler((image, nil))
         }
-        
-        task.resume()
     }
 }

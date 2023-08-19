@@ -37,7 +37,7 @@ final class MovieInformationViewController: UIViewController {
     private func loadData() {
         guard let movieCode = movieCode else { return }
         
-        boxOfficeManager.fetchMovieData(movieCode: movieCode) { result in
+        boxOfficeManager.fetchMovieData(with: movieCode) { result in
             switch result {
             case .success(let movieInformation):
                 DispatchQueue.main.async {
@@ -55,7 +55,7 @@ final class MovieInformationViewController: UIViewController {
         let movieName = movieInformation?.movieName ?? ""
         let keyword = movieName + " 영화 포스터"
         
-        boxOfficeManager.fetchMovieImageData(keyword: keyword) { result in
+        boxOfficeManager.fetchMovieImageData(with: keyword) { result in
             switch result {
             case .success(let image):
                 DispatchQueue.main.async {
