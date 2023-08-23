@@ -1,6 +1,6 @@
 # 🎬 박스오피스 _ 웰다비🍿🥤
 
-- 프로젝트 기간: [2023년 7월 24일 ~ 8월 23일](#타임라인)
+- 프로젝트 기간: [2023년 7월 24일 ~ 8월 23일](https://github.com/WhalesJin/ios-box-office/wiki/타임라인)
 - 프로젝트 팀원: [Whales🐬](https://github.com/WhalesJin), [Dasan🌳](https://github.com/DasanKim)
 - 프로젝트 리뷰어: [vivi🦜](https://github.com/YebinKim)
 
