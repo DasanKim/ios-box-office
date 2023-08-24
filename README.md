@@ -47,8 +47,7 @@
 
 ## 👀 Diagram<a id="Diagram"></a>
 ### 📐 UML
-
-<img src = "https://github.com/WhalesJin/FireSaturdayStudyClassC/assets/124643545/63713dca-1246-411d-8984-a24391eadba0" width = "800">
+<img src = "https://github.com/WhalesJin/ios-box-office/assets/106504779/523e302d-87dc-4d5e-827a-c3d25586d40b" width = "800">
 
 </br>
 </br>
